@@ -23,6 +23,15 @@
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    /**
+     * Normalize tab character width in <pre> elements.
+     * Browsers default to 8 spaces which is excessively wide.
+     *
+     * References:
+     * - https://developer.mozilla.org/en-US/docs/Web/CSS/tab-size
+     */
+    -moz-tab-size: 2;
+    tab-size: 2;
   }
 
   /**

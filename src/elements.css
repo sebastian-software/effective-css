@@ -27,9 +27,17 @@
 
   /**
    * ELT-021: Apply system font stack to body.
+   *
+   * Additional sensible defaults:
+   * - line-height: 1.5 improves readability for body text
+   * - min-height: 100dvh prevents "short body" issues, enables sticky footers
+   * - overflow-wrap: break-word prevents horizontal overflow from long words/URLs
    */
   body {
     font-family: var(--font-system-ui-sans);
+    line-height: 1.5;
+    min-height: 100dvh;
+    overflow-wrap: break-word;
   }
 
   /**

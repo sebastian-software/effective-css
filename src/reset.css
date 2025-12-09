@@ -59,4 +59,13 @@
    * RST-042: cursor: pointer is NOT set globally.
    * These are intentionally omitted to preserve accessibility defaults.
    */
+
+  /**
+   * Normalize table border behavior.
+   * UA defaults for border-collapse vary; this ensures consistent table rendering.
+   */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
 }
