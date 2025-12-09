@@ -37,14 +37,11 @@
     "src"
   ],
   "scripts": {
-    "lint": "stylelint \"src/**/*.css\"",
-    "lint:fix": "stylelint \"src/**/*.css\" --fix",
-    "check": "node scripts/check-syntax.js",
+    "check": "node scripts/validate-css.js",
     "serve": "npx serve docs -p 3000"
   },
   "devDependencies": {
-    "stylelint": "^16.11.0",
-    "stylelint-config-standard": "^36.0.1"
+    "lightningcss": "^1.28.2"
   },
   "sideEffects": [
     "**/*.css"

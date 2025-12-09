@@ -7,8 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  lint:
-    name: Lint CSS
+  validate:
+    name: Validate CSS
     runs-on: ubuntu-latest
 
     steps:
@@ -24,9 +24,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint CSS
-        run: npm run lint
-
-      - name: Check CSS syntax
+      - name: Validate CSS with LightningCSS
         run: npm run check
-

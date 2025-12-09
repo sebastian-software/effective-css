@@ -444,15 +444,15 @@
     <section class="demo-section">
       <div class="demo-section-title">Paragraphs & Inline Elements</div>
       <p>
-        Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. 
-        Sed do eiusmod tempor incididunt ut <em>labore et dolore</em> magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation <a href="#">ullamco laboris</a> 
+        Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>.
+        Sed do eiusmod tempor incididunt ut <em>labore et dolore</em> magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation <a href="#">ullamco laboris</a>
         nisi ut aliquip ex ea commodo consequat.
       </p>
       <p>
-        Duis aute irure dolor in <mark>reprehenderit in voluptate</mark> velit esse cillum 
-        dolore eu fugiat nulla pariatur. The <code>box-sizing: border-box</code> property 
-        ensures predictable sizing. See <abbr title="Cascading Style Sheets">CSS</abbr> 
+        Duis aute irure dolor in <mark>reprehenderit in voluptate</mark> velit esse cillum
+        dolore eu fugiat nulla pariatur. The <code>box-sizing: border-box</code> property
+        ensures predictable sizing. See <abbr title="Cascading Style Sheets">CSS</abbr>
         specification for details.
       </p>
       <p>
@@ -465,7 +465,7 @@
       <div class="demo-section-title">Blockquote</div>
       <blockquote>
         <p>
-          "The best CSS reset is one that gives you a predictable foundation without 
+          "The best CSS reset is one that gives you a predictable foundation without
           fighting against the cascade. Embrace layers, embrace the platform."
         </p>
       </blockquote>
@@ -474,7 +474,7 @@
     <!-- Lists -->
     <section class="demo-section">
       <div class="demo-section-title">Lists</div>
-      
+
       <h4>Unordered List</h4>
       <ul>
         <li>Reset layer normalizes UA defaults</li>
@@ -499,10 +499,10 @@
       <dl>
         <dt>@layer reset</dt>
         <dd>Core normalization rules for box-sizing, margins, and element defaults.</dd>
-        
+
         <dt>@layer fixes</dt>
         <dd>Browser-specific workarounds and accessibility preferences.</dd>
-        
+
         <dt>@layer elements</dt>
         <dd>Optional typography defaults with system font stacks.</dd>
       </dl>
@@ -511,7 +511,7 @@
     <!-- Code -->
     <section class="demo-section">
       <div class="demo-section-title">Code & Preformatted</div>
-      
+
       <p>Import the reset in your CSS:</p>
       <div class="code-block">
         <code><pre>@import "@effective/css";
@@ -562,7 +562,7 @@
     <!-- Forms -->
     <section id="forms" class="demo-section">
       <div class="demo-section-title">Forms</div>
-      
+
       <form class="form-grid" onsubmit="event.preventDefault()">
         <div class="form-row">
           <div class="form-field">
@@ -602,7 +602,7 @@
     <!-- Interactive -->
     <section class="demo-section">
       <div class="demo-section-title">Interactive Elements</div>
-      
+
       <div class="interactive-grid">
         <button class="demo-btn demo-btn-primary">Primary Button</button>
         <button class="demo-btn demo-btn-secondary">Secondary</button>
@@ -615,9 +615,9 @@
       <details>
         <summary>Why use CSS layers?</summary>
         <p>
-          CSS <code>@layer</code> gives you explicit control over the cascade order. 
-          Instead of relying on source order or specificity hacks, you declare your 
-          layers upfront and the browser respects that order regardless of where 
+          CSS <code>@layer</code> gives you explicit control over the cascade order.
+          Instead of relying on source order or specificity hacks, you declare your
+          layers upfront and the browser respects that order regardless of where
           styles are defined.
         </p>
       </details>
@@ -626,7 +626,7 @@
     <!-- Media -->
     <section id="media" class="demo-section">
       <div class="demo-section-title">Media Elements</div>
-      
+
       <div class="media-grid">
         <figure class="media-item">
           <img src="https://picsum.photos/400/300?random=1" alt="Random placeholder image" loading="lazy">
@@ -639,9 +639,9 @@
           </svg>
         </figure>
       </div>
-      
+
       <p>
-        Media elements are set to <code>display: block</code> and <code>max-inline-size: 100%</code> 
+        Media elements are set to <code>display: block</code> and <code>max-inline-size: 100%</code>
         to prevent overflow and remove the unwanted whitespace below inline images.
       </p>
     </section>
@@ -649,13 +649,13 @@
     <!-- Emoji & Fonts -->
     <section class="demo-section">
       <div class="demo-section-title">Emoji & Font Stacks</div>
-      
+
       <p>System font rendering with emoji support:</p>
       <p class="emoji-test">🎨 🚀 ✨ 💻 🔥 ⚡️ 🎯 📦</p>
-      
+
       <p>
-        The <code>--font-system-ui-sans</code> stack includes emoji fonts 
-        (Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji) for consistent 
+        The <code>--font-system-ui-sans</code> stack includes emoji fonts
+        (Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji) for consistent
         emoji rendering across platforms.
       </p>
 
@@ -665,7 +665,7 @@
     <!-- Address & Misc -->
     <section class="demo-section">
       <div class="demo-section-title">Address & Miscellaneous</div>
-      
+
       <address>
         <strong>Effective CSS</strong><br>
         123 Web Standards Lane<br>
@@ -676,8 +676,8 @@
       <hr>
 
       <p>
-        The <del>old reset approach</del> <ins>new layered architecture</ins> provides 
-        better cascade control. Use <sub>subscript</sub> and <sup>superscript</sup> for 
+        The <del>old reset approach</del> <ins>new layered architecture</ins> provides
+        better cascade control. Use <sub>subscript</sub> and <sup>superscript</sup> for
         mathematical notation like H<sub>2</sub>O or E=mc<sup>2</sup>.
       </p>
     </section>
@@ -685,7 +685,7 @@
 
   <footer class="demo-footer">
     <p>
-      <a href="index.html">← Back to Homepage</a> · 
+      <a href="index.html">← Back to Homepage</a> ·
       Built with @effective/css v0.1.0
     </p>
   </footer>
