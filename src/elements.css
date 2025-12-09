@@ -80,6 +80,79 @@
   }
 
   /**
+   * ELT-025: Balanced text wrapping for headings.
+   *
+   * text-wrap: balance distributes words more evenly across lines,
+   * avoiding awkward single-word "orphans" on the last line.
+   * This significantly improves the visual appearance of headlines.
+   *
+   * Note: Browser support is excellent (Chrome 114+, Safari 17.5+, Firefox 121+).
+   * Browsers without support will gracefully ignore this property.
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap
+   * - https://developer.chrome.com/blog/css-text-wrap-balance
+   *
+   * Aligned with:
+   * - Josh Comeau – h1-h6 { text-wrap: balance }
+   * - Andy Bell (Piccalilli) – h1-h6 { text-wrap: balance }
+   */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  /**
+   * ELT-026: Prettier text wrapping for paragraphs.
+   *
+   * text-wrap: pretty attempts to prevent orphans (single words on the last line)
+   * by adjusting line breaks throughout the paragraph. Less aggressive than
+   * balance, making it suitable for body text.
+   *
+   * Note: Newer property with growing support (Chrome 117+, Safari 17.5+).
+   * Browsers without support will gracefully ignore this property.
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap
+   * - https://developer.chrome.com/blog/css-text-wrap-pretty
+   *
+   * Aligned with:
+   * - Josh Comeau – p { text-wrap: pretty }
+   */
+  p {
+    text-wrap: pretty;
+  }
+
+  /**
+   * ELT-040: Create a stacking context for common React/Next.js root elements.
+   *
+   * isolation: isolate creates a new stacking context without any other side effects.
+   * This prevents z-index values inside the app from interacting with z-index values
+   * outside (e.g., browser extensions, third-party widgets, portaled modals).
+   *
+   * Common root element IDs:
+   * - #root: Create React App, Vite React template
+   * - #__next: Next.js
+   * - #app: Vue CLI default
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/CSS/isolation
+   * - https://www.joshwcomeau.com/css/stacking-contexts/
+   *
+   * Aligned with:
+   * - Josh Comeau – #root, #__next { isolation: isolate }
+   */
+  #root,
+  #__next,
+  #app {
+    isolation: isolate;
+  }
+
+  /**
    * ELT-011: h1–h6 and p do NOT receive additional margins.
    * Only the global 0-margins from reset apply.
    * Spacing systems are out of scope for v1.

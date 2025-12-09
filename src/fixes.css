@@ -44,6 +44,51 @@
      */
     -moz-tab-size: 2;
     tab-size: 2;
+
+    /**
+     * UFX-030: Enable automatic color scheme adaptation.
+     *
+     * Allows the browser to automatically adjust native UI elements
+     * (scrollbars, form controls, selection colors) based on the user's
+     * preferred color scheme (light/dark mode).
+     *
+     * References:
+     * - https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+     * - https://web.dev/color-scheme/
+     *
+     * Aligned with:
+     * - Pawel Grzybek – html { color-scheme: light dark }
+     * - Keith J. Grant – color-scheme recommendation
+     * - Modern Normalize (Sindre Sorhus) – supports color-scheme
+     */
+    color-scheme: light dark;
+  }
+
+  /**
+   * UFX-040, UFX-041: Improve font rendering on macOS/WebKit browsers.
+   *
+   * -webkit-font-smoothing: antialiased renders fonts with grayscale antialiasing
+   * instead of subpixel antialiasing. This produces thinner, crisper text that
+   * many designers prefer, especially on high-DPI displays.
+   *
+   * Note: This is WebKit-specific and has no effect on Firefox or other browsers.
+   * Firefox uses its own font rendering which is generally already well-tuned.
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth
+   * - https://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
+   *
+   * Aligned with:
+   * - Josh Comeau – body { -webkit-font-smoothing: antialiased }
+   * - Pawel Grzybek – -webkit-font-smoothing: antialiased
+   * - Tailwind Preflight – -webkit-font-smoothing: antialiased
+   *
+   * Controversy: Some argue subpixel rendering is more readable on low-DPI screens.
+   * Modern high-DPI displays benefit from antialiased rendering.
+   */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /**
