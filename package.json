@@ -37,11 +37,23 @@
     "src"
   ],
   "scripts": {
-    "check": "node scripts/validate-css.js",
-    "serve": "npx serve docs -p 3000"
+    "check": "npm run check:css && npm run check:format",
+    "check:css": "node scripts/validate-css.js",
+    "check:format": "prettier --check \"src/**/*.css\"",
+    "format": "prettier --write \"src/**/*.css\"",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "lightningcss": "^1.28.2"
+    "husky": "^9.1.7",
+    "lightningcss": "^1.28.2",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.4.2"
+  },
+  "lint-staged": {
+    "src/**/*.css": [
+      "prettier --check",
+      "node scripts/validate-css.js"
+    ]
   },
   "sideEffects": [
     "**/*.css"

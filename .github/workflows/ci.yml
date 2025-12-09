@@ -8,7 +8,7 @@ on:
 
 jobs:
   validate:
-    name: Validate CSS
+    name: Validate & Format
     runs-on: ubuntu-latest
 
     steps:
@@ -24,5 +24,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Validate CSS with LightningCSS
-        run: npm run check
+      - name: Check CSS formatting (Prettier)
+        run: npm run check:format
+
+      - name: Validate CSS syntax (LightningCSS)
+        run: npm run check:css
