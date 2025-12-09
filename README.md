@@ -9,8 +9,12 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@effective/css"><img src="https://img.shields.io/npm/v/@effective/css?color=6366f1" alt="npm version"></a>
-  <a href="https://github.com/your-username/effective-css-reset/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@effective/css?color=22c55e" alt="license"></a>
+  <a href="https://www.npmjs.com/package/@effective/css"><img src="https://img.shields.io/npm/v/@effective/css?color=6366f1&label=npm" alt="npm version"></a>
+  <a href="https://github.com/user/effective-css/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-22c55e" alt="MIT License"></a>
+  <img src="https://img.shields.io/badge/CSS-@layer-6366f1?logo=css3&logoColor=white" alt="CSS @layer">
+  <img src="https://img.shields.io/badge/validated_with-LightningCSS-f8b500?logo=lightning&logoColor=white" alt="LightningCSS">
+  <img src="https://img.shields.io/badge/formatted_with-Prettier-ff69b4?logo=prettier&logoColor=white" alt="Prettier">
+  <img src="https://img.shields.io/badge/zero-dependencies-22c55e" alt="Zero Dependencies">
 </p>
 
 ## Features

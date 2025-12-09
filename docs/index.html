@@ -6,7 +6,10 @@
   <title>@effective/css – Modern CSS Reset</title>
   <link rel="stylesheet" href="../src/index.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    /* 
+     * This page uses @effective/css – no external fonts needed!
+     * System UI fonts load instantly and match the OS aesthetic.
+     */
 
     :root {
       --color-bg: #0a0a0f;
@@ -17,11 +20,10 @@
       --color-accent: #6366f1;
       --color-accent-glow: #818cf8;
       --color-success: #22c55e;
-      --font-display: 'Instrument Sans', var(--font-system-ui-sans);
     }
 
     body {
-      font-family: var(--font-display);
+      /* Uses --font-system-ui-sans from @effective/css */
       background: var(--color-bg);
       color: var(--color-text);
       line-height: 1.6;
@@ -175,7 +177,7 @@
 
     .install-code {
       padding: 1.25rem 1.5rem;
-      font-family: 'JetBrains Mono', var(--font-system-ui-mono);
+      font-family: var(--font-system-ui-mono);
       font-size: 0.95rem;
       color: var(--color-text-muted);
     }
@@ -299,7 +301,7 @@
     }
 
     .layer-info h4 {
-      font-family: 'JetBrains Mono', var(--font-system-ui-mono);
+      font-family: var(--font-system-ui-mono);
       font-size: 1.125rem;
       margin-bottom: 0.25rem;
       color: var(--color-accent-glow);
@@ -402,7 +404,7 @@
   <section class="hero">
     <div class="hero-content">
       <img src="logo.svg" alt="@effective/css logo" class="hero-logo">
-      
+
       <div class="badge">
         <span class="badge-dot"></span>
         v0.1.0 – Now with CSS Layers
