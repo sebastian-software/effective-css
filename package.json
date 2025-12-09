@@ -41,8 +41,9 @@
     "check:css": "node scripts/validate-css.js",
     "check:format": "prettier --check \"src/**/*.css\"",
     "format": "prettier --write \"src/**/*.css\"",
+    "build:docs": "node scripts/build-docs.js",
     "prepare": "husky",
-    "serve": "npx serve -p 3000"
+    "serve": "npm run build:docs && npx serve docs -p 3000"
   },
   "devDependencies": {
     "husky": "^9.1.7",

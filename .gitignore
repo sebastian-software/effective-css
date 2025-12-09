@@ -1,0 +1,6 @@
+node_modules
+*.log
+
+# Generated docs CSS (built from src/)
+docs/css/
+
