@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo – @effective/css</title>
+  <link rel="stylesheet" href="../src/index.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --color-bg: #fafaf9;
+      --color-surface: #ffffff;
+      --color-border: #e7e5e4;
+      --color-text: #1c1917;
+      --color-text-muted: #78716c;
+      --color-accent: #7c3aed;
+      --color-accent-light: #ede9fe;
+      --demo-spacing: 2rem;
+      --font-display: 'Instrument Sans', var(--font-system-ui-sans);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-bg: #0c0a09;
+        --color-surface: #1c1917;
+        --color-border: #292524;
+        --color-text: #fafaf9;
+        --color-text-muted: #a8a29e;
+        --color-accent: #a78bfa;
+        --color-accent-light: #2e1065;
+      }
+    }
+
+    body {
+      font-family: var(--font-display);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+    }
+
+    /* Header */
+    .demo-header {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .demo-logo {
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    .demo-nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .demo-nav a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .demo-nav a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Main container */
+    .demo-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Section styling */
+    .demo-section {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--demo-spacing);
+      margin-bottom: 2rem;
+    }
+
+    .demo-section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Demo-specific spacing helpers */
+    .demo-section > *:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    .demo-section h1,
+    .demo-section h2,
+    .demo-section h3,
+    .demo-section h4,
+    .demo-section h5,
+    .demo-section h6 {
+      line-height: 1.3;
+    }
+
+    .demo-section p + p {
+      margin-top: 1em;
+    }
+
+    /* Hero section */
+    .demo-hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, var(--color-accent-light), transparent);
+      border-radius: 12px;
+      margin-bottom: 3rem;
+    }
+
+    .demo-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .demo-hero p {
+      color: var(--color-text-muted);
+      font-size: 1.125rem;
+    }
+
+    /* Typography specimens */
+    .heading-specimen h1 { font-size: 2.5rem; }
+    .heading-specimen h2 { font-size: 2rem; }
+    .heading-specimen h3 { font-size: 1.5rem; }
+    .heading-specimen h4 { font-size: 1.25rem; }
+    .heading-specimen h5 { font-size: 1rem; }
+    .heading-specimen h6 { font-size: 0.875rem; }
+
+    /* Code block styling */
+    .code-block {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+    }
+
+    .code-block code {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Inline code */
+    code:not(.code-block code) {
+      background: var(--color-accent-light);
+      padding: 0.125rem 0.375rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    /* Lists need spacing in demo */
+    .demo-section ul,
+    .demo-section ol,
+    .demo-section dl {
+      padding-left: 1.5rem;
+    }
+
+    .demo-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .demo-section dt {
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    .demo-section dd {
+      color: var(--color-text-muted);
+      margin-left: 1rem;
+    }
+
+    /* Form styling for demo */
+    .form-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .form-field label {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      padding: 0.625rem 0.875rem;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background: var(--color-bg);
+      color: var(--color-text);
+      transition: border-color 0.2s;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px var(--color-accent-light);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .demo-btn {
+      padding: 0.625rem 1.25rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .demo-btn-primary {
+      background: var(--color-accent);
+      color: white;
+    }
+
+    .demo-btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .demo-btn-secondary {
+      background: var(--color-bg);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .demo-btn-secondary:hover {
+      border-color: var(--color-accent);
+    }
+
+    /* Media elements */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .media-item {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .media-item img,
+    .media-item svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Table */
+    .demo-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .demo-table th,
+    .demo-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .demo-table th {
+      font-weight: 600;
+      background: var(--color-bg);
+    }
+
+    .demo-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Blockquote */
+    blockquote {
+      border-left: 3px solid var(--color-accent);
+      padding-left: 1.25rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+
+    /* Details/Summary */
+    details {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    details[open] {
+      padding-bottom: 0.5rem;
+    }
+
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      margin: -1rem;
+      padding: 1rem;
+    }
+
+    details[open] summary {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Address */
+    address {
+      font-style: normal;
+      line-height: 1.8;
+    }
+
+    /* Mark */
+    mark {
+      background: #fef08a;
+      padding: 0.125rem 0.25rem;
+      border-radius: 2px;
+    }
+
+    /* Horizontal rule */
+    hr {
+      border: none;
+      height: 1px;
+      background: var(--color-border);
+      margin: 2rem 0;
+    }
+
+    /* Footer */
+    .demo-footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+
+    .demo-footer a {
+      color: var(--color-accent);
+    }
+
+    /* Interactive elements showcase */
+    .interactive-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    /* Emoji test */
+    .emoji-test {
+      font-size: 2rem;
+      letter-spacing: 0.25rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .demo-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .demo-container {
+        padding: 2rem 1rem;
+      }
+
+      .demo-hero {
+        padding: 2rem 1rem;
+      }
+
+      .demo-hero h1 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="demo-header">
+    <a href="index.html" class="demo-logo">@effective/css</a>
+    <nav class="demo-nav">
+      <a href="index.html">Home</a>
+      <a href="#typography">Typography</a>
+      <a href="#forms">Forms</a>
+      <a href="#media">Media</a>
+    </nav>
+  </header>
+
+  <main class="demo-container">
+    <div class="demo-hero">
+      <h1>CSS Reset Demo</h1>
+      <p>Showcasing the effect of @effective/css on common HTML elements</p>
+    </div>
+
+    <!-- Typography: Headings -->
+    <section id="typography" class="demo-section heading-specimen">
+      <div class="demo-section-title">Headings</div>
+      <h1>Heading Level 1</h1>
+      <h2>Heading Level 2</h2>
+      <h3>Heading Level 3</h3>
+      <h4>Heading Level 4</h4>
+      <h5>Heading Level 5</h5>
+      <h6>Heading Level 6</h6>
+    </section>
+
+    <!-- Typography: Paragraphs & Inline -->
+    <section class="demo-section">
+      <div class="demo-section-title">Paragraphs & Inline Elements</div>
+      <p>
+        Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. 
+        Sed do eiusmod tempor incididunt ut <em>labore et dolore</em> magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation <a href="#">ullamco laboris</a> 
+        nisi ut aliquip ex ea commodo consequat.
+      </p>
+      <p>
+        Duis aute irure dolor in <mark>reprehenderit in voluptate</mark> velit esse cillum 
+        dolore eu fugiat nulla pariatur. The <code>box-sizing: border-box</code> property 
+        ensures predictable sizing. See <abbr title="Cascading Style Sheets">CSS</abbr> 
+        specification for details.
+      </p>
+      <p>
+        <small>This is small text for fine print and legal notices.</small>
+      </p>
+    </section>
+
+    <!-- Blockquote -->
+    <section class="demo-section">
+      <div class="demo-section-title">Blockquote</div>
+      <blockquote>
+        <p>
+          "The best CSS reset is one that gives you a predictable foundation without 
+          fighting against the cascade. Embrace layers, embrace the platform."
+        </p>
+      </blockquote>
+    </section>
+
+    <!-- Lists -->
+    <section class="demo-section">
+      <div class="demo-section-title">Lists</div>
+      
+      <h4>Unordered List</h4>
+      <ul>
+        <li>Reset layer normalizes UA defaults</li>
+        <li>Fixes layer handles browser quirks</li>
+        <li>Elements layer provides font stacks
+          <ul>
+            <li>System UI sans-serif with emoji</li>
+            <li>Monospace for code elements</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Ordered List</h4>
+      <ol>
+        <li>Install the package via npm</li>
+        <li>Import the CSS in your entry point</li>
+        <li>Optionally import individual layers</li>
+        <li>Build your styles on top</li>
+      </ol>
+
+      <h4>Definition List</h4>
+      <dl>
+        <dt>@layer reset</dt>
+        <dd>Core normalization rules for box-sizing, margins, and element defaults.</dd>
+        
+        <dt>@layer fixes</dt>
+        <dd>Browser-specific workarounds and accessibility preferences.</dd>
+        
+        <dt>@layer elements</dt>
+        <dd>Optional typography defaults with system font stacks.</dd>
+      </dl>
+    </section>
+
+    <!-- Code -->
+    <section class="demo-section">
+      <div class="demo-section-title">Code & Preformatted</div>
+      
+      <p>Import the reset in your CSS:</p>
+      <div class="code-block">
+        <code><pre>@import "@effective/css";
+
+/* Your layers come after */
+@layer components {
+  .card {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+}</pre></code>
+      </div>
+
+      <p>Or use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> to inspect elements.</p>
+    </section>
+
+    <!-- Table -->
+    <section class="demo-section">
+      <div class="demo-section-title">Table</div>
+      <table class="demo-table">
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Purpose</th>
+            <th>Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>reset</code></td>
+            <td>Normalize defaults across browsers</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><code>fixes</code></td>
+            <td>Browser-specific workarounds</td>
+            <td>Recommended</td>
+          </tr>
+          <tr>
+            <td><code>elements</code></td>
+            <td>Typography and font stacks</td>
+            <td>Optional</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Forms -->
+    <section id="forms" class="demo-section">
+      <div class="demo-section-title">Forms</div>
+      
+      <form class="form-grid" onsubmit="event.preventDefault()">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Jane Developer">
+          </div>
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="jane@example.com">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="framework">Favorite Framework</label>
+          <select id="framework">
+            <option value="">Select one...</option>
+            <option value="react">React</option>
+            <option value="vue">Vue</option>
+            <option value="svelte">Svelte</option>
+            <option value="solid">SolidJS</option>
+            <option value="vanilla">Vanilla CSS 💪</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" rows="3" placeholder="Tell us about your project..."></textarea>
+        </div>
+
+        <div class="btn-group">
+          <button type="submit" class="demo-btn demo-btn-primary">Submit Form</button>
+          <button type="reset" class="demo-btn demo-btn-secondary">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Interactive -->
+    <section class="demo-section">
+      <div class="demo-section-title">Interactive Elements</div>
+      
+      <div class="interactive-grid">
+        <button class="demo-btn demo-btn-primary">Primary Button</button>
+        <button class="demo-btn demo-btn-secondary">Secondary</button>
+        <button class="demo-btn demo-btn-secondary" disabled>Disabled</button>
+        <a href="#" class="demo-btn demo-btn-secondary">Link as Button</a>
+      </div>
+
+      <hr>
+
+      <details>
+        <summary>Why use CSS layers?</summary>
+        <p>
+          CSS <code>@layer</code> gives you explicit control over the cascade order. 
+          Instead of relying on source order or specificity hacks, you declare your 
+          layers upfront and the browser respects that order regardless of where 
+          styles are defined.
+        </p>
+      </details>
+    </section>
+
+    <!-- Media -->
+    <section id="media" class="demo-section">
+      <div class="demo-section-title">Media Elements</div>
+      
+      <div class="media-grid">
+        <figure class="media-item">
+          <img src="https://picsum.photos/400/300?random=1" alt="Random placeholder image" loading="lazy">
+        </figure>
+        <figure class="media-item">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="300" fill="#7c3aed"/>
+            <circle cx="200" cy="150" r="80" fill="#a78bfa"/>
+            <text x="200" y="160" font-family="system-ui" font-size="24" fill="white" text-anchor="middle">SVG</text>
+          </svg>
+        </figure>
+      </div>
+      
+      <p>
+        Media elements are set to <code>display: block</code> and <code>max-inline-size: 100%</code> 
+        to prevent overflow and remove the unwanted whitespace below inline images.
+      </p>
+    </section>
+
+    <!-- Emoji & Fonts -->
+    <section class="demo-section">
+      <div class="demo-section-title">Emoji & Font Stacks</div>
+      
+      <p>System font rendering with emoji support:</p>
+      <p class="emoji-test">🎨 🚀 ✨ 💻 🔥 ⚡️ 🎯 📦</p>
+      
+      <p>
+        The <code>--font-system-ui-sans</code> stack includes emoji fonts 
+        (Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji) for consistent 
+        emoji rendering across platforms.
+      </p>
+
+      <p>Monospace for code: <code>const greeting = "Hello, World! 👋";</code></p>
+    </section>
+
+    <!-- Address & Misc -->
+    <section class="demo-section">
+      <div class="demo-section-title">Address & Miscellaneous</div>
+      
+      <address>
+        <strong>Effective CSS</strong><br>
+        123 Web Standards Lane<br>
+        Browsertown, CSS 12345<br>
+        <a href="mailto:hello@effective.css">hello@effective.css</a>
+      </address>
+
+      <hr>
+
+      <p>
+        The <del>old reset approach</del> <ins>new layered architecture</ins> provides 
+        better cascade control. Use <sub>subscript</sub> and <sup>superscript</sup> for 
+        mathematical notation like H<sub>2</sub>O or E=mc<sup>2</sup>.
+      </p>
+    </section>
+  </main>
+
+  <footer class="demo-footer">
+    <p>
+      <a href="index.html">← Back to Homepage</a> · 
+      Built with @effective/css v0.1.0
+    </p>
+  </footer>
+</body>
+</html>
+

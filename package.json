@@ -36,11 +36,21 @@
   "files": [
     "src"
   ],
+  "scripts": {
+    "lint": "stylelint \"src/**/*.css\"",
+    "lint:fix": "stylelint \"src/**/*.css\" --fix",
+    "check": "node scripts/check-syntax.js",
+    "serve": "npx serve docs -p 3000"
+  },
+  "devDependencies": {
+    "stylelint": "^16.11.0",
+    "stylelint-config-standard": "^36.0.1"
+  },
   "sideEffects": [
     "**/*.css"
   ],
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "browserslist": [
     "last 2 Chrome versions",

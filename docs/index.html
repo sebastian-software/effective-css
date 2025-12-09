@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@effective/css – Modern CSS Reset</title>
+  <link rel="stylesheet" href="../src/index.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --color-bg: #0a0a0f;
+      --color-surface: #12121a;
+      --color-border: #2a2a3a;
+      --color-text: #e4e4ed;
+      --color-text-muted: #8888a0;
+      --color-accent: #6366f1;
+      --color-accent-glow: #818cf8;
+      --color-success: #22c55e;
+      --font-display: 'Instrument Sans', var(--font-system-ui-sans);
+    }
+
+    body {
+      font-family: var(--font-display);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      min-height: 100dvh;
+    }
+
+    /* Animated gradient background */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 2rem 8rem;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.3), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(139, 92, 246, 0.15), transparent),
+        radial-gradient(ellipse 50% 30% at 20% 80%, rgba(59, 130, 246, 0.1), transparent);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 1rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-success);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--color-accent-glow), #a78bfa, #f472b6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: white;
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-accent-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-secondary {
+      background: var(--color-surface);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-accent);
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Install code block */
+    .install-block {
+      max-width: 500px;
+      margin: 4rem auto 0;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .install-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .install-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-border);
+    }
+
+    .install-dot:nth-child(1) { background: #ff5f57; }
+    .install-dot:nth-child(2) { background: #ffbd2e; }
+    .install-dot:nth-child(3) { background: #28c840; }
+
+    .install-code {
+      padding: 1.25rem 1.5rem;
+      font-family: 'JetBrains Mono', var(--font-system-ui-mono);
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+    }
+
+    .install-code span {
+      color: var(--color-accent-glow);
+    }
+
+    /* Features section */
+    .features {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--color-accent), #a78bfa);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    /* Layers visualization */
+    .layers-section {
+      padding: 6rem 2rem;
+      background: var(--color-surface);
+    }
+
+    .layers-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .layer-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .layer-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+
+    .layer-item:hover {
+      border-color: var(--color-accent);
+    }
+
+    .layer-number {
+      width: 40px;
+      height: 40px;
+      background: var(--color-accent);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.125rem;
+      flex-shrink: 0;
+    }
+
+    .layer-info h4 {
+      font-family: 'JetBrains Mono', var(--font-system-ui-mono);
+      font-size: 1.125rem;
+      margin-bottom: 0.25rem;
+      color: var(--color-accent-glow);
+    }
+
+    .layer-info p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+
+    .layer-badge {
+      margin-left: auto;
+      padding: 0.25rem 0.75rem;
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--color-success);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .layer-badge.optional {
+      background: rgba(251, 191, 36, 0.1);
+      color: #fbbf24;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 8rem 2rem;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-section p {
+      color: var(--color-text-muted);
+      font-size: 1.125rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+
+    footer a {
+      color: var(--color-text);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 4rem 1.5rem 6rem;
+      }
+      
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .layer-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .layer-badge {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        v0.1.0 – Now with CSS Layers
+      </div>
+      
+      <h1>The CSS Reset<br>for <span>Modern Web</span></h1>
+      
+      <p class="tagline">
+        A thoughtful, layered CSS reset built for evergreen browsers. 
+        Uses <code>@layer</code> for predictable cascade control.
+      </p>
+      
+      <div class="cta-group">
+        <a href="demo.html" class="btn btn-primary">
+          View Demo →
+        </a>
+        <a href="https://github.com" class="btn btn-secondary">
+          GitHub
+        </a>
+      </div>
+      
+      <div class="install-block">
+        <div class="install-header">
+          <span class="install-dot"></span>
+          <span class="install-dot"></span>
+          <span class="install-dot"></span>
+        </div>
+        <div class="install-code">
+          <span>npm</span> install @effective/css
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="features">
+    <p class="section-title">Why @effective/css</p>
+    <h2 class="section-heading">Built for the modern stack</h2>
+    
+    <div class="feature-grid">
+      <article class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Layered Architecture</h3>
+        <p>Uses native CSS <code>@layer</code> for explicit cascade control. No more specificity wars or <code>!important</code> hacks.</p>
+      </article>
+      
+      <article class="feature-card">
+        <div class="feature-icon">📦</div>
+        <h3>Modular by Design</h3>
+        <p>Import the full reset or pick individual layers. The <code>elements</code> layer is completely optional.</p>
+      </article>
+      
+      <article class="feature-card">
+        <div class="feature-icon">🧩</div>
+        <h3>Web Component Safe</h3>
+        <p>No inheritance patterns that break Shadow DOM. Direct <code>box-sizing</code> ensures consistent behavior across Custom Elements.</p>
+      </article>
+      
+      <article class="feature-card">
+        <div class="feature-icon">♿</div>
+        <h3>Accessibility First</h3>
+        <p>Focus indicators preserved. Respects <code>prefers-reduced-motion</code>. No aggressive resets that harm usability.</p>
+      </article>
+      
+      <article class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Evergreen Only</h3>
+        <p>Targets modern browsers without legacy baggage. Smaller, cleaner, faster. No IE hacks or outdated workarounds.</p>
+      </article>
+      
+      <article class="feature-card">
+        <div class="feature-icon">✨</div>
+        <h3>Zero Dependencies</h3>
+        <p>Pure CSS. No preprocessors required. No build step needed. Just import and go.</p>
+      </article>
+    </div>
+  </section>
+  
+  <section class="layers-section">
+    <div class="layers-content">
+      <p class="section-title">Architecture</p>
+      <h2 class="section-heading">Three layers, clear purpose</h2>
+      
+      <div class="layer-stack">
+        <div class="layer-item">
+          <span class="layer-number">1</span>
+          <div class="layer-info">
+            <h4>@layer reset</h4>
+            <p>Normalizes UA defaults. Box-sizing, margins, padding, media elements, form inheritance.</p>
+          </div>
+          <span class="layer-badge">Core</span>
+        </div>
+        
+        <div class="layer-item">
+          <span class="layer-number">2</span>
+          <div class="layer-info">
+            <h4>@layer fixes</h4>
+            <p>Browser-specific workarounds. Text-size-adjust, reduced motion preferences.</p>
+          </div>
+          <span class="layer-badge">Core</span>
+        </div>
+        
+        <div class="layer-item">
+          <span class="layer-number">3</span>
+          <div class="layer-info">
+            <h4>@layer elements</h4>
+            <p>System font stacks with emoji support. Minimal element defaults for typography.</p>
+          </div>
+          <span class="layer-badge optional">Optional</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta-section">
+    <h2>Ready to reset?</h2>
+    <p>Start building on a solid, predictable foundation.</p>
+    <div class="cta-group">
+      <a href="demo.html" class="btn btn-primary">
+        Explore the Demo →
+      </a>
+    </div>
+  </section>
+  
+  <footer>
+    <p>
+      MIT License · 
+      <a href="https://github.com">View on GitHub</a> · 
+      Made for modern browsers
+    </p>
+  </footer>
+</body>
+</html>
+
