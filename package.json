@@ -1,5 +1,5 @@
 {
-  "name": "effective-css-reset",
+  "name": "@effective/css",
   "version": "0.1.0",
   "description": "A modern, layered CSS reset for evergreen browsers using @layer",
   "keywords": [

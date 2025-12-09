@@ -1,4 +1,4 @@
-# effective-css-reset
+# @effective/css
 
 A modern, layered CSS reset for evergreen browsers using CSS `@layer`.
 
@@ -13,7 +13,7 @@ A modern, layered CSS reset for evergreen browsers using CSS `@layer`.
 ## Installation
 
 ```bash
-npm install effective-css-reset
+npm install @effective/css
 ```
 
 ## Usage
@@ -23,13 +23,13 @@ npm install effective-css-reset
 Import the complete reset with all layers:
 
 ```css
-@import "effective-css-reset";
+@import "@effective/css";
 ```
 
 Or in JavaScript/bundlers:
 
 ```js
-import "effective-css-reset";
+import "@effective/css";
 ```
 
 ### Individual Layers
@@ -38,13 +38,13 @@ Import only what you need:
 
 ```css
 /* Core reset (recommended) */
-@import "effective-css-reset/reset.css";
+@import "@effective/css/reset.css";
 
 /* Browser fixes (recommended) */
-@import "effective-css-reset/fixes.css";
+@import "@effective/css/fixes.css";
 
 /* Element defaults with font stacks (optional) */
-@import "effective-css-reset/elements.css";
+@import "@effective/css/elements.css";
 ```
 
 ### Layer Order
