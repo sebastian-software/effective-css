@@ -1,6 +1,17 @@
-# @effective/css
+<p align="center">
+  <img src="docs/logo.svg" alt="@effective/css" width="120" height="120">
+</p>
 
-A modern, layered CSS reset for evergreen browsers using CSS `@layer`.
+<h1 align="center">@effective/css</h1>
+
+<p align="center">
+  A modern, layered CSS reset for evergreen browsers using CSS <code>@layer</code>.
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@effective/css"><img src="https://img.shields.io/npm/v/@effective/css?color=6366f1" alt="npm version"></a>
+  <a href="https://github.com/your-username/effective-css-reset/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@effective/css?color=22c55e" alt="license"></a>
+</p>
 
 ## Features
 
