@@ -14,6 +14,13 @@
    *
    * --font-system-ui-sans: Modern system UI font stack with full emoji support.
    * --font-system-ui-mono: Modern monospace font stack for code elements.
+   *
+   * Aligned with:
+   * - CSS-Tricks (Chris Coyier) – System Font Stack article
+   * - Tailwind Preflight – system-ui based font stack
+   * - GitHub – uses similar system font stack
+   * - Bootstrap 5 – native font stack
+   * - Andy Bell (Piccalilli) – system-ui, sans-serif
    */
   :root {
     --font-system-ui-sans:
@@ -32,6 +39,11 @@
    * - line-height: 1.5 improves readability for body text
    * - min-height: 100dvh prevents "short body" issues, enables sticky footers
    * - overflow-wrap: break-word prevents horizontal overflow from long words/URLs
+   *
+   * Aligned with:
+   * - line-height: Josh Comeau (1.5), Andy Bell (1.5), Tailwind (1.5)
+   * - min-height: Josh Comeau (100%), Andy Bell (100%), Modern best practice (100dvh)
+   * - overflow-wrap: Josh Comeau (break-word on specific elements)
    */
   body {
     font-family: var(--font-system-ui-sans);
@@ -42,6 +54,10 @@
 
   /**
    * ELT-023: Apply monospace font stack to code elements.
+   *
+   * Aligned with:
+   * - Tailwind Preflight – code, kbd, samp, pre { font-family: monospace stack }
+   * - Normalize.css – code, kbd, samp { font-family: monospace }
    */
   code,
   pre,
@@ -54,6 +70,10 @@
    * ELT-010: Minor link improvements while keeping them recognizable.
    * text-decoration-skip-ink improves readability of underlines
    * by avoiding crossing descenders (g, j, p, q, y).
+   *
+   * Aligned with:
+   * - Andy Bell (Piccalilli) – a { text-decoration-skip-ink: auto }
+   * - Modern browser default (but explicit is better)
    */
   a {
     text-decoration-skip-ink: auto;
@@ -69,5 +89,9 @@
    *
    * ELT-030, ELT-031: No fluid typography, scales, or clamp()-based
    * font sizing in v1. Only default UA behavior + base font family.
+   *
+   * Intentionally NOT included (contrary to some resets):
+   * - Elad Shechter removes list-style completely
+   * - Some resets add heading margins back
    */
 }

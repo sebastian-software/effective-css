@@ -19,16 +19,28 @@
    * - https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust
    * - https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/
    * - https://webkit.org/blog/57/css3-text-size-adjust/
+   *
+   * Aligned with:
+   * - Normalize.css – html { -webkit-text-size-adjust: 100% }
+   * - Modern Normalize (Sindre Sorhus) – text-size-adjust: 100%
+   * - Kilian Valkhof (CSS-Tricks article) – explicit recommendation
    */
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+
     /**
      * Normalize tab character width in <pre> elements.
      * Browsers default to 8 spaces which is excessively wide.
      *
      * References:
      * - https://developer.mozilla.org/en-US/docs/Web/CSS/tab-size
+     *
+     * Aligned with:
+     * - Normalize.css – html { tab-size: 4 }
+     * - Modern Normalize (Sindre Sorhus) – tab-size: 4
+     * - Tailwind Preflight – tab-size: 4
+     * (We use 2 for more compact code display)
      */
     -moz-tab-size: 2;
     tab-size: 2;
@@ -46,6 +58,11 @@
    * - https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
    * - https://www.smashingmagazine.com/2021/10/respecting-users-motion-preferences/
    * - https://web.dev/prefers-reduced-motion/
+   *
+   * Aligned with:
+   * - Josh Comeau – @media (prefers-reduced-motion: reduce) handling
+   * - Andy Bell (Piccalilli) – more aggressive (animation/transition-duration: 0.01ms)
+   * - Jake Lazaroff – scroll-behavior: auto
    *
    * UFX-022: Additional reductions (animation-duration, transition-duration)
    * are intentionally omitted in v1 to avoid breaking intentional animations.

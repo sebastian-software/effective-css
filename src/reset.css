@@ -14,6 +14,13 @@
    *
    * Note: We use a direct approach rather than inheritance (RST-021, RST-023)
    * to ensure compatibility with Web Components and slotted content (WC-003).
+   *
+   * Aligned with:
+   * - Andy Bell (Piccalilli) – margin: 0 on *, box-sizing: border-box
+   * - Tailwind Preflight – margin: 0, box-sizing: border-box
+   * - Elad Shechter (The New CSS Reset) – via all: unset approach
+   * - Eric Meyer Reset – margin: 0, padding: 0
+   * - Josh Comeau – box-sizing: border-box (margin only on body)
    */
   *,
   *::before,
@@ -32,6 +39,12 @@
    * RST-031: Media elements get block display with responsive sizing.
    * This prevents unwanted whitespace below inline images and ensures
    * media elements don't overflow their containers.
+   *
+   * Aligned with:
+   * - Josh Comeau – img, picture, video, canvas, svg { display: block; max-width: 100% }
+   * - Andy Bell (Piccalilli) – img, picture { display: block; max-width: 100% }
+   * - Tailwind Preflight – img, video { display: block; max-width: 100% }
+   * - Keith J. Grant – img { max-width: 100% }
    */
   img,
   picture,
@@ -46,6 +59,12 @@
   /**
    * RST-040: Form elements inherit font from their parent.
    * This ensures consistent typography across form controls.
+   *
+   * Aligned with:
+   * - Josh Comeau – input, button, textarea, select { font: inherit }
+   * - Andy Bell (Piccalilli) – input, button, textarea, select { font: inherit }
+   * - Tailwind Preflight – button, input, select, textarea { font-family/size/line-height: inherit }
+   * - Normalize.css – partial (font-family: inherit on button/input)
    */
   button,
   input,
@@ -58,11 +77,21 @@
    * RST-041: Focus indicators are NOT removed (no global outline: none).
    * RST-042: cursor: pointer is NOT set globally.
    * These are intentionally omitted to preserve accessibility defaults.
+   *
+   * Aligned with:
+   * - Josh Comeau – explicitly does NOT remove outlines
+   * - Andy Bell (Piccalilli) – explicitly does NOT remove outlines
+   * - WCAG accessibility guidelines
    */
 
   /**
    * Normalize table border behavior.
    * UA defaults for border-collapse vary; this ensures consistent table rendering.
+   *
+   * Aligned with:
+   * - Andy Bell (Piccalilli) – table { border-collapse: collapse }
+   * - Tailwind Preflight – table { border-collapse: collapse }
+   * - Eric Meyer Reset – table { border-collapse: collapse; border-spacing: 0 }
    */
   table {
     border-collapse: collapse;
