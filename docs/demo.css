@@ -1,0 +1,508 @@
+/**
+ * @effective/css Demo Page Styles
+ */
+
+/* ========================================
+   Theme Variables (shared with main site)
+   ======================================== */
+
+:root {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-border: #e5e5e5;
+  --color-text: #171717;
+  --color-text-muted: #737373;
+  --color-accent: #7c3aed;
+  --color-accent-light: #ede9fe;
+  --demo-spacing: 2rem;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0c0a09;
+  --color-surface: #1c1917;
+  --color-border: #292524;
+  --color-text: #fafaf9;
+  --color-text-muted: #a8a29e;
+  --color-accent: #a78bfa;
+  --color-accent-light: #2e1065;
+}
+
+/* ========================================
+   Base
+   ======================================== */
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ========================================
+   Header
+   ======================================== */
+
+.demo-header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.demo-logo {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.demo-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.demo-nav a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.demo-nav a:hover {
+  color: var(--color-accent);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ========================================
+   Container
+   ======================================== */
+
+.demo-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* ========================================
+   Demo Section
+   ======================================== */
+
+.demo-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--demo-spacing);
+  margin-bottom: 2rem;
+}
+
+.demo-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.demo-section > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.demo-section h1,
+.demo-section h2,
+.demo-section h3,
+.demo-section h4,
+.demo-section h5,
+.demo-section h6 {
+  line-height: 1.3;
+}
+
+.demo-section p + p {
+  margin-top: 1em;
+}
+
+/* ========================================
+   Hero
+   ======================================== */
+
+.demo-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--color-accent-light);
+  border-radius: 12px;
+  margin-bottom: 3rem;
+}
+
+.demo-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.demo-hero p {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+
+.heading-specimen h1 {
+  font-size: 2.5rem;
+}
+.heading-specimen h2 {
+  font-size: 2rem;
+}
+.heading-specimen h3 {
+  font-size: 1.5rem;
+}
+.heading-specimen h4 {
+  font-size: 1.25rem;
+}
+.heading-specimen h5 {
+  font-size: 1rem;
+}
+.heading-specimen h6 {
+  font-size: 0.875rem;
+}
+
+/* ========================================
+   Code
+   ======================================== */
+
+.code-block {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+code:not(.code-block code) {
+  background: var(--color-accent-light);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+kbd {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.85em;
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+/* ========================================
+   Lists
+   ======================================== */
+
+.demo-section ul,
+.demo-section ol,
+.demo-section dl {
+  padding-left: 1.5rem;
+}
+
+.demo-section li {
+  margin-bottom: 0.5rem;
+}
+
+.demo-section dt {
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.demo-section dd {
+  color: var(--color-text-muted);
+  margin-left: 1rem;
+}
+
+/* ========================================
+   Forms
+   ======================================== */
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.form-field label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color 0.2s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.btn-group {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.demo-btn {
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.demo-btn-primary {
+  background: var(--color-accent);
+  color: white;
+}
+
+.demo-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.demo-btn-secondary {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.demo-btn-secondary:hover {
+  border-color: var(--color-accent);
+}
+
+.demo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   Interactive
+   ======================================== */
+
+.interactive-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+details {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+details[open] {
+  padding-bottom: 0.5rem;
+}
+
+summary {
+  font-weight: 600;
+  cursor: pointer;
+  margin: -1rem;
+  padding: 1rem;
+}
+
+details[open] summary {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ========================================
+   Media
+   ======================================== */
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.media-item {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.media-item img,
+.media-item svg {
+  width: 100%;
+  height: auto;
+}
+
+/* ========================================
+   Table
+   ======================================== */
+
+.demo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.demo-table th,
+.demo-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.demo-table th {
+  font-weight: 600;
+  background: var(--color-bg);
+}
+
+.demo-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ========================================
+   Misc
+   ======================================== */
+
+blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.25rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+address {
+  font-style: normal;
+  line-height: 1.8;
+}
+
+mark {
+  background: #fef08a;
+  padding: 0.125rem 0.25rem;
+  border-radius: 2px;
+}
+
+[data-theme="dark"] mark {
+  background: #854d0e;
+  color: #fef08a;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+  margin: 2rem 0;
+}
+
+.emoji-test {
+  font-size: 2rem;
+  letter-spacing: 0.25rem;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.demo-footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.demo-footer a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.demo-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 640px) {
+  .demo-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .demo-container {
+    padding: 2rem 1rem;
+  }
+
+  .demo-hero {
+    padding: 2rem 1rem;
+  }
+
+  .demo-hero h1 {
+    font-size: 1.75rem;
+  }
+}
+
