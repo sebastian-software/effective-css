@@ -4,6 +4,12 @@ import { resolve } from "path";
 export default defineConfig({
   root: ".",
   base: "./",
+  server: {
+    port: 4000,
+  },
+  preview: {
+    port: 4001,
+  },
   build: {
     outDir: "../dist",
     emptyOutDir: true,
