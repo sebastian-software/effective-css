@@ -44,6 +44,7 @@
    ======================================== */
 
 body {
+  font-family: var(--font-system-ui-sans);
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;

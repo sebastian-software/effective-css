@@ -1,26 +1,27 @@
 {
   "name": "@effective/css",
   "version": "0.1.0",
-  "description": "A modern, layered CSS reset for evergreen browsers using @layer",
+  "description": "A modern, layered CSS foundation for evergreen browsers using @layer",
   "keywords": [
     "css",
+    "foundation",
     "reset",
     "normalize",
-    "css-reset",
     "css-layer",
     "cascade-layers",
-    "modern-css"
+    "modern-css",
+    "baseline"
   ],
   "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-username/effective-css-reset.git"
+    "url": "git+https://github.com/user/effective-css.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/effective-css-reset/issues"
+    "url": "https://github.com/user/effective-css/issues"
   },
-  "homepage": "https://github.com/your-username/effective-css-reset#readme",
+  "homepage": "https://github.com/user/effective-css#readme",
   "type": "module",
   "main": "src/index.css",
   "style": "src/index.css",

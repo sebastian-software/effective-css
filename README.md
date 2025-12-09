@@ -5,7 +5,7 @@
 <h1 align="center">@effective/css</h1>
 
 <p align="center">
-  A modern, layered CSS reset for evergreen browsers using CSS <code>@layer</code>.
+  A modern, layered CSS foundation for evergreen browsers using CSS <code>@layer</code>.
 </p>
 
 <p align="center">
@@ -20,7 +20,7 @@
 ## Features
 
 - 🎯 **Layered Architecture** – Uses CSS `@layer` for clear cascade control
-- 📦 **Modular** – Import the full reset or individual layers
+- 📦 **Modular** – Import the full foundation or individual layers
 - 🌐 **Evergreen** – Targets modern browsers (Chrome, Edge, Firefox, Safari)
 - 🧩 **Web Component Safe** – No inheritance patterns that break Shadow DOM
 - ♿ **Accessible** – Preserves focus indicators and motion preferences
@@ -33,9 +33,9 @@ npm install @effective/css
 
 ## Usage
 
-### Full Reset
+### Full Foundation
 
-Import the complete reset with all layers:
+Import the complete foundation with all layers:
 
 ```css
 @import "@effective/css";
@@ -52,7 +52,7 @@ import "@effective/css";
 Import only what you need:
 
 ```css
-/* Core reset (recommended) */
+/* Core normalization (recommended) */
 @import "@effective/css/reset.css";
 
 /* Browser fixes (recommended) */
@@ -115,7 +115,7 @@ When using the `elements` layer, these variables are available:
 
 ## Philosophy
 
-- **No utility classes** – This is a reset, not a framework
+- **No utility classes** – This is a foundation, not a framework
 - **No components** – Only base element styles
 - **Plain CSS** – No preprocessors required
 - **Web Component friendly** – Direct box-sizing, no inheritance tricks
@@ -123,4 +123,3 @@ When using the `elements` layer, these variables are available:
 ## License
 
 MIT
-
