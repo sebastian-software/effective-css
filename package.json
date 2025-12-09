@@ -1,13 +1,51 @@
 {
   "name": "effective-css-reset",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "version": "0.1.0",
+  "description": "A modern, layered CSS reset for evergreen browsers using @layer",
+  "keywords": [
+    "css",
+    "reset",
+    "normalize",
+    "css-reset",
+    "css-layer",
+    "cascade-layers",
+    "modern-css"
+  ],
   "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/effective-css-reset.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/effective-css-reset/issues"
+  },
+  "homepage": "https://github.com/your-username/effective-css-reset#readme",
+  "type": "module",
+  "main": "src/index.css",
+  "style": "src/index.css",
+  "exports": {
+    ".": "./src/index.css",
+    "./reset": "./src/reset.css",
+    "./reset.css": "./src/reset.css",
+    "./fixes": "./src/fixes.css",
+    "./fixes.css": "./src/fixes.css",
+    "./elements": "./src/elements.css",
+    "./elements.css": "./src/elements.css"
+  },
+  "files": [
+    "src"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ]
 }

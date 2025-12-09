@@ -1,0 +1,82 @@
+/**
+ * effective-css-reset – Elements Layer
+ * @layer elements
+ *
+ * Goal: Minimal, semantically sensible HTML element defaults; no compound UI components.
+ * ELT-001 to ELT-031
+ *
+ * ELT-003: This file is fully optional. Integrators can choose not to import it.
+ */
+
+@layer elements {
+  /**
+   * ELT-020, ELT-022, ELT-024: Define system font stacks including emoji fonts.
+   *
+   * --font-system-ui-sans: Modern system UI font stack with full emoji support.
+   * --font-system-ui-mono: Modern monospace font stack for code elements.
+   */
+  :root {
+    --font-system-ui-sans:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      Arial,
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+      "Noto Color Emoji";
+
+    --font-system-ui-mono:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      "Liberation Mono",
+      "Courier New",
+      monospace;
+  }
+
+  /**
+   * ELT-021: Apply system font stack to body.
+   */
+  body {
+    font-family: var(--font-system-ui-sans);
+  }
+
+  /**
+   * ELT-023: Apply monospace font stack to code elements.
+   */
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--font-system-ui-mono);
+  }
+
+  /**
+   * ELT-010: Minor link improvements while keeping them recognizable.
+   * text-decoration-skip-ink improves readability of underlines
+   * by avoiding crossing descenders (g, j, p, q, y).
+   */
+  a {
+    text-decoration-skip-ink: auto;
+  }
+
+  /**
+   * ELT-011: h1–h6 and p do NOT receive additional margins.
+   * Only the global 0-margins from reset apply.
+   * Spacing systems are out of scope for v1.
+   *
+   * ELT-012: ul, ol, dl keep their list-style defaults.
+   * Margin/padding are already 0 from reset.
+   *
+   * ELT-030, ELT-031: No fluid typography, scales, or clamp()-based
+   * font sizing in v1. Only default UA behavior + base font family.
+   */
+}
+

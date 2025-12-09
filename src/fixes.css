@@ -1,0 +1,51 @@
+/**
+ * effective-css-reset – Fixes Layer
+ * @layer fixes
+ *
+ * Goal: Browser-specific workarounds and bug fixes; no visual design decisions.
+ * UFX-001 to UFX-022
+ */
+
+@layer fixes {
+  /**
+   * UFX-010, UFX-011: Prevent font-size inflation on mobile browsers.
+   *
+   * Affected browsers: Mobile Safari, some Android browsers
+   * Description: When a page has a viewport meta tag but contains text in a
+   * container narrower than the viewport, mobile browsers may inflate the
+   * font-size to make it more readable. This causes inconsistent text sizing.
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust
+   * - https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/
+   * - https://webkit.org/blog/57/css3-text-size-adjust/
+   */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /**
+   * UFX-020, UFX-021: Respect user preference for reduced motion.
+   *
+   * Affected browsers: All browsers that support prefers-reduced-motion
+   * Description: Users with vestibular motion disorders or motion sensitivity
+   * can indicate they prefer reduced motion. This ensures smooth scrolling
+   * is disabled for these users.
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+   * - https://www.smashingmagazine.com/2021/10/respecting-users-motion-preferences/
+   * - https://web.dev/prefers-reduced-motion/
+   *
+   * UFX-022: Additional reductions (animation-duration, transition-duration)
+   * are intentionally omitted in v1 to avoid breaking intentional animations.
+   * Implementers should handle these in their own stylesheets as needed.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      scroll-behavior: auto !important;
+    }
+  }
+}
+

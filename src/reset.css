@@ -1,0 +1,63 @@
+/**
+ * effective-css-reset – Reset Layer
+ * @layer reset
+ *
+ * Goal: Normalize UA defaults across browsers without browser-specific bug fixes.
+ * RST-001 to RST-042
+ */
+
+@layer reset {
+  /**
+   * RST-010, RST-011: Remove all margins and padding from all elements.
+   * RST-020, RST-022: Set box-sizing to border-box directly (not via inheritance).
+   * RST-003: Apply to all standardized HTML elements including pseudo-elements.
+   *
+   * Note: We use a direct approach rather than inheritance (RST-021, RST-023)
+   * to ensure compatibility with Web Components and slotted content (WC-003).
+   */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /**
+   * RST-030: html and body keep their UA default display types.
+   * No forced display overrides applied here.
+   */
+
+  /**
+   * RST-031: Media elements get block display with responsive sizing.
+   * This prevents unwanted whitespace below inline images and ensures
+   * media elements don't overflow their containers.
+   */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-inline-size: 100%;
+    block-size: auto;
+  }
+
+  /**
+   * RST-040: Form elements inherit font from their parent.
+   * This ensures consistent typography across form controls.
+   */
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /**
+   * RST-041: Focus indicators are NOT removed (no global outline: none).
+   * RST-042: cursor: pointer is NOT set globally.
+   * These are intentionally omitted to preserve accessibility defaults.
+   */
+}
+

@@ -1,0 +1,25 @@
+/**
+ * effective-css-reset
+ * A modern, layered CSS reset for evergreen browsers.
+ *
+ * @version 0.1.0
+ * @license MIT
+ * @see https://github.com/your-username/effective-css-reset
+ *
+ * Usage:
+ *   @import "effective-css-reset";
+ *
+ * Or import individual layers:
+ *   @import "effective-css-reset/reset.css";
+ *   @import "effective-css-reset/fixes.css";
+ *   @import "effective-css-reset/elements.css"; // optional
+ *
+ * LAY-004: Recommended layer declaration order.
+ * This establishes cascade priority: reset < fixes < elements
+ */
+@layer reset, fixes, elements;
+
+@import "./reset.css";
+@import "./fixes.css";
+@import "./elements.css";
+
