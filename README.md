@@ -81,7 +81,9 @@ If you're using other `@layer` declarations, include ours in your order:
 
 ### Layer: `fixes`
 
-- Prevents text-size inflation on mobile browsers
+- Prevents text-size inflation on mobile browsers (`text-size-adjust`)
+- Enables automatic dark mode for native UI elements (`color-scheme: light dark`)
+- Applies optimized font rendering on macOS/WebKit (`-webkit-font-smoothing: antialiased`)
 - Respects `prefers-reduced-motion` for scroll behavior
 
 ### Layer: `elements` (optional)
@@ -90,7 +92,10 @@ If you're using other `@layer` declarations, include ours in your order:
   - `--font-system-ui-sans` – System UI fonts with emoji support
   - `--font-system-ui-mono` – Monospace fonts for code
 - Applies font stacks to `body` and code elements
-- Improves link underline rendering
+- Improves link underline rendering (`text-decoration-skip-ink`)
+- Balanced text wrapping for headings (`text-wrap: balance`)
+- Prettier text wrapping for paragraphs (`text-wrap: pretty`)
+- Creates isolated stacking context for React/Next.js/Vue root elements (`#root`, `#__next`, `#app`)
 
 ## Browser Support
 
