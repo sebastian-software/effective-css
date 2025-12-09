@@ -41,7 +41,8 @@
     "check:css": "node scripts/validate-css.js",
     "check:format": "prettier --check \"src/**/*.css\"",
     "format": "prettier --write \"src/**/*.css\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "serve": "npx serve -p 3000"
   },
   "devDependencies": {
     "husky": "^9.1.7",
