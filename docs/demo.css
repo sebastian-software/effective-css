@@ -7,13 +7,6 @@
    ======================================== */
 
 :root {
-  /* Font stacks from @effective/css */
-  --font-system-ui-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-system-ui-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-
   /* Theme colors */
   --color-bg: #fafafa;
   --color-surface: #ffffff;

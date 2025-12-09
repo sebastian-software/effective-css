@@ -1,10 +1,10 @@
 /**
- * @effective/css Homepage
+ * @effective/css Demo Page
  */
 
 // Import CSS via JS so Vite processes @imports correctly
 import "../src/index.css";
-import "./styles.css";
+import "./demo.css";
 
 // Initialize theme toggle
 import { initTheme } from "./theme.js";
