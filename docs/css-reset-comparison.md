@@ -31,7 +31,7 @@ This table summarizes all relevant CSS reset recommendations from various source
 | System Font Stack (monospace) | ✅ | [Tailwind][3], [Normalize.css][14] | [MDN: ui-monospace](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family) |
 | `text-wrap: balance` for headings | ✅ | [Josh Comeau][1], [Andy Bell][2] | [MDN: text-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap) · [CSS Text Level 4 Spec](https://drafts.csswg.org/css-text-4/#text-wrap) |
 | `text-wrap: pretty` for paragraphs | ✅ | [Josh Comeau][1] | [MDN: text-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap) · [Chrome Blog](https://developer.chrome.com/blog/css-text-wrap-pretty) |
-| `hanging-punctuation: first last` | ❌ | [Pawel Grzybek][8] | [MDN: hanging-punctuation](https://developer.mozilla.org/en-US/docs/Web/CSS/hanging-punctuation) |
+| `hanging-punctuation: first last` | ✅ | [Pawel Grzybek][8], [Jeremy Keith][24] | [MDN: hanging-punctuation](https://developer.mozilla.org/en-US/docs/Web/CSS/hanging-punctuation) |
 | **Text Size Adjust** ||||
 | `-moz-text-size-adjust: 100%` | ✅ | [Kilian Valkhof][17] | [MDN: text-size-adjust](https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust) · [CanIUse](https://caniuse.com/text-size-adjust) |
 | `-webkit-text-size-adjust: 100%` | ✅ | [Normalize.css][14], [Modern Normalize][16], [Kilian Valkhof][17], [Tailwind][3] | [MDN: text-size-adjust](https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust) |
@@ -185,6 +185,7 @@ Properties used in `@effective/css` that may be less familiar:
 [21]: https://cloudfour.com/thinks/childish-font-sizes/
 [22]: https://github.com/Lazzzer00/Best-CSS-Reset-2024
 [23]: https://github.com/jensimmons/cssremedy
+[24]: https://adactio.com/journal/21027
 
 ---
 
@@ -204,6 +205,7 @@ Properties used in `@effective/css` that may be less familiar:
 - Hidden attribute: display: none !important
 - Scroll margin: :target { scroll-margin-block: 5ex }
 - Intrinsic size animations: interpolate-size: allow-keywords
+- Hanging punctuation: first last (with form/code exceptions)
 - Reduced Motion: scroll-behavior: auto
 - CSS Layers: @layer reset, fixes, elements
 - Font Smoothing: -webkit-font-smoothing: antialiased, -moz-osx-font-smoothing: grayscale

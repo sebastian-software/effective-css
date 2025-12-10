@@ -205,7 +205,19 @@
 
 * **ELT-024**: Emoji / emoticons MUST remain properly rendered via the emoji fonts in `--font-sans`; the default stack MUST NOT omit emoji-capable fonts.
 
-### 4.4 Typography scope in v1
+### 4.4 Hanging punctuation
+
+* **ELT-027**: `:root` MAY enable `hanging-punctuation: first last` for cleaner text blocks.
+
+* **ELT-028**: Form elements (`input`, `textarea`, `output`) and code elements (`pre`, `code`, `kbd`, `samp`) MUST disable hanging punctuation to prevent text cutoff and scrollbar issues:
+
+  ```css
+  input, textarea, output, pre, code, kbd, samp {
+    hanging-punctuation: none;
+  }
+  ```
+
+### 4.5 Typography scope in v1
 
 * **ELT-030**: v1 MUST NOT define fluid typography, scales, or `clamp()`-based font sizing.
 * **ELT-031**: v1 MUST NOT define global type scales (heading hierarchies, rhythm systems, etc.); only default UA behavior + base font family.

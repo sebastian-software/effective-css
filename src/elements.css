@@ -80,6 +80,46 @@
   }
 
   /**
+   * ELT-027: Hanging punctuation for cleaner text blocks.
+   *
+   * Punctuation marks at the beginning or end of lines "hang" over the edge,
+   * creating visually cleaner text blocks without ragged edges from quotes.
+   * This is a classic typographic technique now available in CSS.
+   *
+   * Browser support (Dec 2025): Safari only. Perfect progressive enhancement –
+   * browsers without support simply ignore it.
+   *
+   * IMPORTANT: Must be disabled on form fields (text gets cut off) and
+   * preformatted text (causes unwanted horizontal scrollbars).
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/CSS/hanging-punctuation
+   * - https://adactio.com/journal/21027 (gotchas with forms/pre)
+   *
+   * Aligned with:
+   * - Pawel Grzybek – html { hanging-punctuation: first last }
+   */
+  :root {
+    hanging-punctuation: first last;
+  }
+
+  /**
+   * Disable hanging-punctuation where it causes problems:
+   * - Form fields: punctuation at start gets hidden/cut off
+   * - Pre/code: causes unwanted horizontal scrollbars
+   * - Output: dynamic content may start with punctuation
+   */
+  input,
+  textarea,
+  output,
+  pre,
+  code,
+  kbd,
+  samp {
+    hanging-punctuation: none;
+  }
+
+  /**
    * ELT-025: Balanced text wrapping for headings.
    *
    * text-wrap: balance distributes words more evenly across lines,
