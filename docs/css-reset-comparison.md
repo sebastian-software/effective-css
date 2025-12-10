@@ -54,7 +54,7 @@ This table summarizes all relevant CSS reset recommendations from various source
 | `button, [role="button"] { cursor: pointer }` | 🚫 | Various — *Intentionally excluded* | |
 | **Links** ||||
 | `a { text-decoration-skip-ink: auto }` | ✅ | [Andy Bell][2] | [MDN: text-decoration-skip-ink](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-skip-ink) |
-| `a:not([class]) { color: currentColor }` | ❌ | [Andy Bell][2] | |
+| `a { color: inherit }` | ✅ | [Andy Bell][2], [Destyle.css][25] | |
 | `a:not([class]) { text-decoration-color: ... }` | ❌ | [Andy Bell][2] | |
 | **Lists** ||||
 | `ul, ol { list-style: none }` | 🚫 | [Elad Shechter][12], [Eric Meyer][11] — *We keep list-style defaults* | |
@@ -186,6 +186,7 @@ Properties used in `@effective/css` that may be less familiar:
 [22]: https://github.com/Lazzzer00/Best-CSS-Reset-2024
 [23]: https://github.com/jensimmons/cssremedy
 [24]: https://adactio.com/journal/21027
+[25]: https://github.com/nicolas-cusan/destyle.css
 
 ---
 

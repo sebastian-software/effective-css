@@ -67,15 +67,23 @@
   }
 
   /**
-   * ELT-010: Minor link improvements while keeping them recognizable.
+   * ELT-010: Link styling improvements.
+   *
+   * color: inherit removes the default blue link color. Nobody wants it,
+   * and custom link colors are trivially set via parent selectors or classes.
+   *
    * text-decoration-skip-ink improves readability of underlines
    * by avoiding crossing descenders (g, j, p, q, y).
    *
+   * Note: Links remain recognizable via underline (text-decoration).
+   *
    * Aligned with:
-   * - Andy Bell (Piccalilli) – a { text-decoration-skip-ink: auto }
-   * - Modern browser default (but explicit is better)
+   * - Andy Bell (Piccalilli) – a:not([class]) { color: currentColor }
+   * - Destyle.css – a { color: inherit }
+   * - text-decoration-skip-ink: auto – Modern browser default (explicit)
    */
   a {
+    color: inherit;
     text-decoration-skip-ink: auto;
   }
 
