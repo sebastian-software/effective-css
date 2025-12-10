@@ -114,11 +114,16 @@
   ```css
   @layer fixes {
     html {
+      -moz-text-size-adjust: 100%;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
   }
   ```
+
+  Vendor prefixes:
+  - `-moz-`: Firefox on Android
+  - `-webkit-`: Safari (iOS/macOS), Chrome, Edge
 
 * **UFX-011**: The use of `text-size-adjust` MUST be documented with reference to Mobile Safari font-size inflation and related articles.
 

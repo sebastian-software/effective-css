@@ -20,12 +20,17 @@
    * - https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/
    * - https://webkit.org/blog/57/css3-text-size-adjust/
    *
+   * Vendor prefixes:
+   * - -moz-: Firefox on Android (not desktop)
+   * - -webkit-: Safari (iOS/macOS), Chrome, Edge
+   *
    * Aligned with:
    * - Normalize.css – html { -webkit-text-size-adjust: 100% }
    * - Modern Normalize (Sindre Sorhus) – text-size-adjust: 100%
-   * - Kilian Valkhof (CSS-Tricks article) – explicit recommendation
+   * - Kilian Valkhof – explicit recommendation including -moz- prefix
    */
   html {
+    -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 

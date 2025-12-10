@@ -33,8 +33,9 @@ This table summarizes all relevant CSS reset recommendations from various source
 | `text-wrap: pretty` for paragraphs | ✅ | [Josh Comeau][1] | [MDN: text-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap) · [Chrome Blog](https://developer.chrome.com/blog/css-text-wrap-pretty) |
 | `hanging-punctuation: first last` | ❌ | [Pawel Grzybek][8] | [MDN: hanging-punctuation](https://developer.mozilla.org/en-US/docs/Web/CSS/hanging-punctuation) |
 | **Text Size Adjust** ||||
-| `-webkit-text-size-adjust: 100%` | ✅ | [Normalize.css][14], [Modern Normalize][16], [CSS-Tricks][17], [Tailwind][3] | [MDN: text-size-adjust](https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust) |
-| `text-size-adjust: 100%` (unprefixed) | ✅ | [Modern Normalize][16], [CSS-Tricks][17] | [MDN: text-size-adjust](https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust) |
+| `-moz-text-size-adjust: 100%` | ✅ | [Kilian Valkhof][17] | [MDN: text-size-adjust](https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust) · [CanIUse](https://caniuse.com/text-size-adjust) |
+| `-webkit-text-size-adjust: 100%` | ✅ | [Normalize.css][14], [Modern Normalize][16], [Kilian Valkhof][17], [Tailwind][3] | [MDN: text-size-adjust](https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust) |
+| `text-size-adjust: 100%` (unprefixed) | ✅ | [Modern Normalize][16], [Kilian Valkhof][17] | [MDN: text-size-adjust](https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust) |
 | **Tab Size** ||||
 | `tab-size: 4` | ⚠️ | [Normalize.css][14], [Modern Normalize][16], [Tailwind][3] — *We use tab-size: 2* | [MDN: tab-size](https://developer.mozilla.org/en-US/docs/Web/CSS/tab-size) |
 | **Overflow / Word Wrap** ||||
@@ -120,7 +121,7 @@ This table summarizes all relevant CSS reset recommendations from various source
 
 | Source | Focus |
 |---|---|
-| [CSS-Tricks – Your Reset Needs text-size-adjust][17] | Mobile font-size inflation |
+| [Kilian Valkhof – Your Reset Needs text-size-adjust][17] | Mobile font-size inflation |
 | [CSS-Tricks – Reboot, Resets, Reasoning][9] | Comparison of different approaches |
 | [CSS-Tricks – System Font Stack][15] | Native font stacks |
 | [SitePoint – CSS Reset Contradiction][19] | Pro/con discussion |
@@ -177,7 +178,7 @@ Properties used in `@effective/css` that may be less familiar:
 [14]: https://necolas.github.io/normalize.css/
 [15]: https://css-tricks.com/snippets/css/system-font-stack/
 [16]: https://github.com/sindresorhus/modern-normalize
-[17]: https://css-tricks.com/your-css-reset-needs-text-size-adjust-probably/
+[17]: https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/
 [18]: https://github.com/filipelinhares/ress
 [19]: https://www.sitepoint.com/css-reset-contradiction/
 [20]: https://snook.ca/archives/html_and_css/still-no-css-reset
