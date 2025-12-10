@@ -1,268 +1,78 @@
-# Effective CSS Reset – Requirements v1 (EN)
+# Effective CSS – Design Principles
 
-## 0. Meta
+This document describes the high-level design decisions and philosophy.
+For implementation details, see the inline comments in the CSS source files.
 
-- **META-001**: `id = "effective-css-reset"`
-- **META-002**: `version = "0.1.0"`
-- **META-003**: `status = "draft"`
-- **META-004**: `target-browsers = "Evergreen (Chrome, Edge, Firefox, Safari, last 2–3 years)"`
-- **META-005**: No legacy support for IE / old Android stock browsers.
+## Target Browsers
 
----
+**Evergreen browsers only:** Chrome, Edge, Firefox, Safari (last 2-3 years).
+No legacy support for IE or old Android stock browsers.
 
-## 1. Layer architecture
+## Layer Architecture
 
-- **LAY-001**: The implementation MUST use `@layer` for structure.
-- **LAY-002**: Reserved layer names:
-  - `reset`
-  - `fixes`
-  - `elements`
-- **LAY-003**: Each file MUST declare its own layer via `@layer <name> { ... }` at top level.
-- **LAY-004**: Recommended declaration order in global CSS:
+```css
+@layer reset, fixes, elements;
+```
 
-  ```css
-  @layer reset, fixes, elements;
-````
+| Layer | Purpose | Required |
+|-------|---------|----------|
+| `reset` | Normalize UA defaults across browsers | Yes |
+| `fixes` | Browser-specific workarounds and bug fixes | Yes |
+| `elements` | Sensible defaults for HTML elements | Optional |
 
-* **LAY-005**: Global utility classes (e.g. `.sr-only`, `.stack`, `.btn`) MUST NOT be defined.
-* **LAY-006**: Global naming schemes (e.g. `.u-*`, `.c-*`, `.o-*`) MUST NOT be defined in this project.
+The cascade order ensures: `reset < fixes < elements < your styles`
 
----
+Using `@layer` means your styles always win over these defaults, regardless of specificity.
 
-## 2. Layer `reset`
+## Design Decisions
 
-### 2.1 General
+### What We Reset
 
-* **RST-001**: Layer name MUST be `reset`.
-* **RST-002**: Goal: normalize UA defaults across browsers, without browser-specific bug fixes.
-* **RST-003**: The reset MUST apply to all standardized HTML elements (including `::before` / `::after`), not only `body`.
+- **Box model:** `border-box` on all elements (directly, not via inheritance)
+- **Spacing:** Zero margins and padding on all elements
+- **Media:** Block display and responsive sizing for images, video, etc.
+- **Forms:** Inherit font and color from parent
+- **Tables:** Collapsed borders, inherited colors
 
-### 2.2 Margin / padding
+### What We Fix
 
-* **RST-010**: All HTML elements MUST get `margin: 0;`.
-* **RST-011**: All HTML elements MUST get `padding: 0;`.
-* **RST-012**: Any exceptions to RST-010/011 (if introduced) MUST be explicitly documented in comments.
+- **Text inflation:** Prevent mobile browsers from enlarging text
+- **Reduced motion:** Respect user preference, disable animations
+- **Hidden attribute:** Ensure `[hidden]` always works
+- **Color scheme:** Support automatic light/dark mode
 
-### 2.3 Box sizing
+### What We Enhance (Optional)
 
-* **RST-020**: The global box model MUST be `box-sizing: border-box;`.
+- **Typography:** System font stacks, balanced headings, prettier paragraphs
+- **Links:** Inherit color, improved underlines
+- **Scroll behavior:** Margin for anchor links
+- **Modern CSS:** `interpolate-size` for height animations, `hanging-punctuation`
 
-* **RST-021**: The pattern
+### What We Don't Touch
 
-  ```css
-  html {
-    box-sizing: border-box;
-  }
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-  ```
+- **Focus indicators:** Never removed (accessibility)
+- **Cursor styles:** No global `cursor: pointer` (accessibility)
+- **List styles:** Preserved on `ul`/`ol` (semantic defaults)
+- **Heading sizes:** No type scale (use your own)
 
-  MUST NOT be used, due to issues with Web Components and slotted content.
+## Web Components Compatibility
 
-* **RST-022**: `box-sizing` MUST be set directly on the elements (or HTML tag list), not via inheritance.
+- Uses direct `box-sizing` instead of inheritance pattern
+- Does not style inside Shadow DOM
+- Does not break Custom Elements or unknown tags
 
-* **RST-023**: The “inheriting box-sizing from html” pattern is considered **deprecated** for this project.
+## Non-Goals
 
-*(Exact selector strategy – e.g. full HTML tag list vs. `html *` – is implementation detail, but MUST respect WC requirements in §5.)*
+This project intentionally does NOT provide:
 
-### 2.4 Display & media elements
+- Utility classes (`.sr-only`, `.stack`, `.container`)
+- UI components (buttons, cards, modals)
+- Naming conventions (`.u-*`, `.c-*`, BEM)
+- Fluid typography or type scales
+- Build tool configurations
+- Preprocessor features (SCSS, PostCSS)
 
-* **RST-030**: `html` and `body` MUST keep their UA default display types (no forced display overrides).
-* **RST-031**: For `img`, `picture`, `video`, `canvas`, `svg` the following MUST be applied:
+## References
 
-  ```css
-  @layer reset {
-    img,
-    picture,
-    video,
-    canvas,
-    svg {
-      display: block;
-      max-inline-size: 100%;
-      block-size: auto;
-    }
-  }
-  ```
-
-### 2.5 Forms & interactive elements
-
-* **RST-040**: `button`, `input`, `textarea`, `select` MUST use `font: inherit;`.
-* **RST-041**: Focus indicators MUST NOT be removed in `reset` (no global `outline: none;`).
-* **RST-042**: `cursor: pointer;` MUST NOT be set globally in `reset` (only local, if ever, in higher layers).
-
----
-
-## 3. Layer `fixes`
-
-### 3.1 General
-
-* **UFX-001**: Layer name MUST be `fixes`.
-* **UFX-002**: Goal: browser-specific workarounds / bug fixes; no visual design decisions.
-* **UFX-003**: Every fix MUST have a comment including:
-
-  * Affected browser(s)
-  * Short description of the bug / behavior
-  * Link to external reference (article, bug report, spec issue)
-
-### 3.2 Text scaling / mobile
-
-* **UFX-010**: `html` MUST include `text-size-adjust` settings:
-
-  ```css
-  @layer fixes {
-    html {
-      -moz-text-size-adjust: 100%;
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-    }
-  }
-  ```
-
-  Vendor prefixes:
-  - `-moz-`: Firefox on Android
-  - `-webkit-`: Safari (iOS/macOS), Chrome, Edge
-
-* **UFX-011**: The use of `text-size-adjust` MUST be documented with reference to Mobile Safari font-size inflation and related articles.
-
-### 3.3 Motion / `prefers-reduced-motion`
-
-* **UFX-020**: There MUST be a block reacting to `@media (prefers-reduced-motion: reduce)`.
-
-* **UFX-021**: Minimal requirement:
-
-  ```css
-  @layer fixes {
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        scroll-behavior: auto !important;
-      }
-    }
-  }
-  ```
-
-* **UFX-022**: Additional reductions (e.g. `animation-duration`, `transition-duration`) are optional and MUST be clearly commented if implemented.
-
-### 3.4 Hidden attribute
-
-* **UFX-050**: The `[hidden]` attribute MUST reliably hide elements:
-
-  ```css
-  @layer fixes {
-    [hidden] {
-      display: none !important;
-    }
-  }
-  ```
-
-  The `!important` ensures the attribute works even when `display` is set by other CSS rules.
-
----
-
-## 4. Layer `elements`
-
-*(Previously “components”; intentionally narrower in scope.)*
-
-### 4.1 General
-
-* **ELT-001**: Layer name MUST be `elements`.
-* **ELT-002**: Goal: minimal, semantically sensible HTML element defaults; no compound UI components.
-* **ELT-003**: `elements` MUST be fully optional (e.g. separate file; integrator can choose not to import).
-
-### 4.2 Basic HTML elements
-
-* **ELT-010**: `a` elements MAY be slightly adjusted (e.g. `text-decoration-skip-ink: auto;`) but MUST remain clearly recognizable as links.
-* **ELT-011**: `h1`–`h6`, `p` MUST NOT receive additional margins in `elements` (spacing systems are out of scope for v1; only the global 0-margins from `reset` apply).
-* **ELT-012**: `ul`, `ol`, `dl` MUST keep `list-style` defaults; margin/padding are already 0 from `reset`.
-
-### 4.3 Font stacks (system UI & monospace, including emoji)
-
-* **ELT-020**: `:root` MUST define `--font-sans` as a modern system font stack including emoji fonts, for example:
-
-  ```css
-  :root {
-    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, "Helvetica Neue", Arial, sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-      "Noto Color Emoji";
-  }
-  ```
-
-* **ELT-021**: `body` MUST use `font-family: var(--font-sans);`.
-
-* **ELT-022**: `:root` MUST define `--font-mono` as a modern monospace stack, e.g.:
-
-  ```css
-  :root {
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco,
-      Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-  ```
-
-* **ELT-023**: `code`, `pre`, `kbd`, `samp` MUST use `font-family: var(--font-mono);`.
-
-* **ELT-024**: Emoji / emoticons MUST remain properly rendered via the emoji fonts in `--font-sans`; the default stack MUST NOT omit emoji-capable fonts.
-
-### 4.4 Hanging punctuation
-
-* **ELT-027**: `:root` MAY enable `hanging-punctuation: first last` for cleaner text blocks.
-
-* **ELT-028**: Form elements (`input`, `textarea`, `output`) and code elements (`pre`, `code`, `kbd`, `samp`) MUST disable hanging punctuation to prevent text cutoff and scrollbar issues:
-
-  ```css
-  input, textarea, output, pre, code, kbd, samp {
-    hanging-punctuation: none;
-  }
-  ```
-
-### 4.5 Typography scope in v1
-
-* **ELT-030**: v1 MUST NOT define fluid typography, scales, or `clamp()`-based font sizing.
-* **ELT-031**: v1 MUST NOT define global type scales (heading hierarchies, rhythm systems, etc.); only default UA behavior + base font family.
-
-### 4.5 Scroll margin for anchor links
-
-* **ELT-050**: Targeted elements (`:target`) SHOULD have scroll margin for better UX:
-
-  ```css
-  @layer elements {
-    :target {
-      scroll-margin-block: 5ex;
-    }
-  }
-  ```
-
-### 4.6 Intrinsic size animations
-
-* **ELT-060**: When motion is allowed, `interpolate-size` MAY be enabled:
-
-  ```css
-  @layer elements {
-    @media (prefers-reduced-motion: no-preference) {
-      :root {
-        interpolate-size: allow-keywords;
-      }
-    }
-  }
-  ```
-
-  This enables CSS animations to/from `height: auto` and similar intrinsic sizes.
-
----
-
-## 5. Web Components & third-party systems
-
-* **WC-001**: The reset MUST NOT rely on Shadow DOM-specific selectors (`::part`, `::slotted`) or modify styles inside component shadow trees.
-* **WC-002**: The reset MUST be written so that it does not unexpectedly break Custom Elements or Web Component libraries (no opinionated styling on unknown tags).
-* **WC-003**: Because of Web Component and slot behavior, box sizing inheritance patterns (see RST-021) MUST be avoided; direct `box-sizing` is required.
-
----
-
-## 6. Explicit non-goals / constraints
-
-* **NG-001**: No global utility classes (see LAY-005/006).
-* **NG-002**: No full UI components (buttons, cards, modals, etc.) in this project.
-* **NG-003**: v1 MUST be plain CSS (no required SCSS/LESS/PostCSS features).
-* **NG-004**: v1 MUST NOT define build-tool configurations (bundling options, “only-reset” builds, etc.); build tooling is out of scope for this version.
+For detailed implementation notes and alignment with other CSS resets,
+see the inline comments in each CSS file and `docs/css-reset-comparison.md`.

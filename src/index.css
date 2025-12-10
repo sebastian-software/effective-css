@@ -4,6 +4,10 @@
  *
  * @version 0.1.0
  * @license MIT
+ * @see https://github.com/user/effective-css
+ *
+ * Target browsers: Evergreen (Chrome, Edge, Firefox, Safari, last 2-3 years)
+ * No legacy support for IE or old Android stock browsers.
  *
  * Usage:
  *   @import "@effective/css";
@@ -13,8 +17,22 @@
  *   @import "@effective/css/fixes.css";
  *   @import "@effective/css/elements.css"; // optional
  *
- * LAY-004: Recommended layer declaration order.
- * This establishes cascade priority: reset < fixes < elements
+ * Layer architecture:
+ *   - reset:    Normalize UA defaults (margin, padding, box-sizing, etc.)
+ *   - fixes:    Browser-specific workarounds (text-size-adjust, reduced-motion)
+ *   - elements: Optional sensible defaults (fonts, links, typography)
+ *
+ * The @layer cascade ensures your styles always win over these defaults,
+ * regardless of specificity.
+ *
+ * Web Components: This reset uses direct box-sizing (not inheritance) to
+ * ensure compatibility with Shadow DOM and slotted content.
+ *
+ * Non-goals:
+ *   - No utility classes (.sr-only, .stack, etc.)
+ *   - No UI components (buttons, cards, modals)
+ *   - No fluid typography or type scales
+ *   - Plain CSS only (no preprocessor required)
  */
 @layer reset, fixes, elements;
 
