@@ -97,12 +97,15 @@
   }
 
   /**
-   * UFX-020, UFX-021: Respect user preference for reduced motion.
+   * UFX-020: Respect user preference for reduced motion.
    *
-   * Affected browsers: All browsers that support prefers-reduced-motion
-   * Description: Users with vestibular motion disorders or motion sensitivity
-   * can indicate they prefer reduced motion. This ensures smooth scrolling
-   * is disabled for these users.
+   * Users with vestibular motion disorders or motion sensitivity can indicate
+   * they prefer reduced motion. This aggressively disables animations and
+   * transitions for these users.
+   *
+   * Why 0.01ms instead of 0ms?
+   * Ensures `animationend` and `transitionend` events still fire, so JS
+   * that depends on these events doesn't break.
    *
    * References:
    * - https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
@@ -110,16 +113,16 @@
    * - https://web.dev/prefers-reduced-motion/
    *
    * Aligned with:
-   * - Josh Comeau – @media (prefers-reduced-motion: reduce) handling
-   * - Andy Bell (Piccalilli) – more aggressive (animation/transition-duration: 0.01ms)
-   * - Jake Lazaroff – scroll-behavior: auto
-   *
-   * UFX-022: Additional reductions (animation-duration, transition-duration)
-   * are intentionally omitted in v1 to avoid breaking intentional animations.
-   * Implementers should handle these in their own stylesheets as needed.
+   * - Andy Bell (Piccalilli) – animation/transition-duration: 0.01ms
+   * - Josh Comeau – scroll-behavior handling
    */
   @media (prefers-reduced-motion: reduce) {
-    * {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
   }

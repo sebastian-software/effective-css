@@ -70,8 +70,8 @@ This table summarizes all relevant CSS reset recommendations from various source
 | `:focus-visible` styling | ❌ | [Keith Grant][4] | [MDN: :focus-visible](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible) |
 | **Reduced Motion** ||||
 | `@media (prefers-reduced-motion: reduce) { scroll-behavior: auto }` | ✅ | [Jake Lazaroff][5], [Andy Bell][2] | [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) |
-| `@media (prefers-reduced-motion: reduce) { animation-duration: 0.01ms }` | ❌ | [Andy Bell][2], [Elly Loel][13] | |
-| `@media (prefers-reduced-motion: reduce) { transition-duration: 0.01ms }` | ❌ | [Andy Bell][2], [Elly Loel][13] | |
+| `@media (prefers-reduced-motion: reduce) { animation-duration: 0.01ms }` | ✅ | [Andy Bell][2], [Elly Loel][13] | |
+| `@media (prefers-reduced-motion: reduce) { transition-duration: 0.01ms }` | ✅ | [Andy Bell][2], [Elly Loel][13] | |
 | `@media (prefers-reduced-motion: no-preference) { scroll-behavior: smooth }` | ❌ | [Andy Bell][2], [Jake Lazaroff][5] | [MDN: scroll-behavior](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior) |
 | **Color Scheme** ||||
 | `html { color-scheme: light dark }` | ✅ | [Pawel Grzybek][8], [Keith Grant][4], [Modern Normalize][16] | [MDN: color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme) · [CSS Color Adjustment Spec](https://drafts.csswg.org/css-color-adjust/#color-scheme-prop) |
