@@ -101,4 +101,20 @@
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  /**
+   * RST-050: Remove list-style from menu element.
+   *
+   * The <menu> element is semantically for interactive controls (buttons, commands)
+   * but browsers render it like <ul> with bullets. That makes no sense for toolbars.
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu
+   *
+   * Aligned with:
+   * - Tailwind Preflight – menu { list-style: none }
+   */
+  menu {
+    list-style: none;
+  }
 }
