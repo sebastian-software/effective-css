@@ -57,13 +57,16 @@
   }
 
   /**
-   * RST-040: Form elements inherit font from their parent.
-   * This ensures consistent typography across form controls.
+   * RST-040: Form elements inherit font and color from their parent.
+   * This ensures consistent typography and colors across form controls.
+   *
+   * Without color: inherit, browsers apply their own colors to form elements
+   * which often clash with the page design, especially in dark mode.
    *
    * Aligned with:
    * - Josh Comeau – input, button, textarea, select { font: inherit }
    * - Andy Bell (Piccalilli) – input, button, textarea, select { font: inherit }
-   * - Tailwind Preflight – button, input, select, textarea { font-family/size/line-height: inherit }
+   * - Tailwind Preflight – button, input, select, textarea { font: inherit; color: inherit }
    * - Normalize.css – partial (font-family: inherit on button/input)
    */
   button,
@@ -71,6 +74,7 @@
   textarea,
   select {
     font: inherit;
+    color: inherit;
   }
 
   /**

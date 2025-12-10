@@ -48,7 +48,7 @@ This table summarizes all relevant CSS reset recommendations from various source
 | `img { vertical-align: middle }` | ❌ | [Tailwind][3] | |
 | **Form Elements** ||||
 | `button, input, textarea, select { font: inherit }` | ✅ | [Josh Comeau][1], [Andy Bell][2], [Tailwind][3] | |
-| `button, input, textarea, select { color: inherit }` | ❌ | [Tailwind][3] | |
+| `button, input, textarea, select { color: inherit }` | ✅ | [Tailwind][3] | |
 | `button { cursor: pointer }` | 🚫 | [Trys Mudford][7] — *Intentionally excluded for accessibility* | |
 | `textarea { resize: vertical }` | ❌ | [Andy Bell][2] | |
 | `button, [role="button"] { cursor: pointer }` | 🚫 | Various — *Intentionally excluded* | |
@@ -195,7 +195,7 @@ Properties used in `@effective/css` that may be less familiar:
 - Box-Sizing: border-box on all elements
 - Margin/Padding: 0 on all elements
 - Media Elements: block display, responsive sizing
-- Form Elements: font: inherit
+- Form Elements: font: inherit, color: inherit
 - Typography: line-height 1.5, System Font Stacks
 - Body: min-height 100dvh, overflow-wrap
 - Tables: border-collapse, border-spacing
