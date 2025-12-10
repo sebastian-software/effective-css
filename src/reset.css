@@ -89,17 +89,23 @@
    */
 
   /**
-   * Normalize table border behavior.
-   * UA defaults for border-collapse vary; this ensures consistent table rendering.
+   * Normalize table behavior.
+   *
+   * - border-collapse/spacing: Consistent table rendering across browsers
+   * - text-indent: 0: Some browsers apply text-indent to tables (legacy quirk)
+   * - border-color: inherit: Browsers set own border colors that clash with page design
    *
    * Aligned with:
    * - Andy Bell (Piccalilli) – table { border-collapse: collapse }
-   * - Tailwind Preflight – table { border-collapse: collapse }
+   * - Tailwind Preflight – table { border-collapse: collapse; text-indent: 0; border-color: inherit }
    * - Eric Meyer Reset – table { border-collapse: collapse; border-spacing: 0 }
+   * - Sanitize.css – table { border-color: currentColor }
    */
   table {
     border-collapse: collapse;
     border-spacing: 0;
+    text-indent: 0;
+    border-color: inherit;
   }
 
   /**

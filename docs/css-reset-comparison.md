@@ -63,8 +63,8 @@ This table summarizes all relevant CSS reset recommendations from various source
 | **Tables** ||||
 | `table { border-collapse: collapse }` | ✅ | [Andy Bell][2], [Tailwind][3], [Eric Meyer][11] | |
 | `table { border-spacing: 0 }` | ✅ | [Eric Meyer][11] | |
-| `table { text-indent: 0 }` | ❌ | [Tailwind][3] | |
-| `table { border-color: inherit }` | ❌ | [Tailwind][3] | |
+| `table { text-indent: 0 }` | ✅ | [Tailwind][3] | |
+| `table { border-color: inherit }` | ✅ | [Tailwind][3], [Sanitize.css][26] | |
 | **Focus & Accessibility** ||||
 | `*:focus { outline: none }` | 🚫 | Various — *Intentionally NOT implemented for accessibility* | |
 | `:focus-visible` styling | ❌ | [Keith Grant][4] | [MDN: :focus-visible](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible) |
@@ -187,6 +187,7 @@ Properties used in `@effective/css` that may be less familiar:
 [23]: https://github.com/jensimmons/cssremedy
 [24]: https://adactio.com/journal/21027
 [25]: https://github.com/nicolas-cusan/destyle.css
+[26]: https://github.com/csstools/sanitize.css
 
 ---
 
