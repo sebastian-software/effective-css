@@ -153,6 +153,54 @@
   }
 
   /**
+   * ELT-050: Improved scroll behavior for anchor links.
+   *
+   * When navigating to an element via anchor link (e.g., #section), the browser
+   * scrolls to put that element at the top of the viewport. This can cause the
+   * element to be hidden behind fixed headers or feel cramped.
+   *
+   * scroll-margin-block adds breathing room above targeted elements.
+   * 5ex ≈ 5 line heights, providing comfortable spacing.
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin
+   * - https://css-tricks.com/fixed-headers-and-jump-links-the-solution-is-scroll-margin-top/
+   *
+   * Aligned with:
+   * - Andy Bell (Piccalilli) – :target { scroll-margin-block: 5ex }
+   */
+  :target {
+    scroll-margin-block: 5ex;
+  }
+
+  /**
+   * ELT-060: Enable animations to/from intrinsic sizes like `height: auto`.
+   *
+   * By default, CSS cannot animate between a fixed size and `auto` (or other
+   * intrinsic keywords like `min-content`, `max-content`, `fit-content`).
+   * `interpolate-size: allow-keywords` enables this, making accordion-style
+   * animations and expand/collapse effects much easier to implement.
+   *
+   * Note: Only enabled when user has no motion preference, as this property
+   * specifically enables animations.
+   *
+   * Browser support (Dec 2025): Chrome/Edge 129+. Firefox/Safari not yet.
+   * Progressive enhancement: browsers without support simply ignore it.
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size
+   * - https://developer.chrome.com/docs/css-ui/animate-to-height-auto
+   *
+   * Aligned with:
+   * - Josh Comeau (2025 update) – html { interpolate-size: allow-keywords }
+   */
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      interpolate-size: allow-keywords;
+    }
+  }
+
+  /**
    * ELT-011: h1–h6 and p do NOT receive additional margins.
    * Only the global 0-margins from reset apply.
    * Spacing systems are out of scope for v1.

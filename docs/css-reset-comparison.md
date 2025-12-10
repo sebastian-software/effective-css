@@ -91,7 +91,7 @@ This table summarizes all relevant CSS reset recommendations from various source
 | `b, strong { font-weight: bolder }` | ❌ | [Normalize.css][14], [Modern Normalize][16] | |
 | `small { font-size: 80% }` | ❌ | [Normalize.css][14] | |
 | `sub, sup { font-size: 75%; line-height: 0; ... }` | ❌ | [Normalize.css][14] | |
-| `[hidden] { display: none !important }` | ❌ | [Andy Bell][2] | [MDN: hidden attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden) |
+| `[hidden] { display: none !important }` | ✅ | [Andy Bell][2], [CSS Remedy][23], [Normalize.css][14] | [MDN: hidden attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden) |
 | `::selection` styling | ❌ | [Keith Grant][4] | [MDN: ::selection](https://developer.mozilla.org/en-US/docs/Web/CSS/::selection) |
 | `::placeholder { color: ... }` | ❌ | [Tailwind][3] | [MDN: ::placeholder](https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder) |
 | `:disabled { cursor: default }` | ❌ | [Tailwind][3] | |
@@ -184,6 +184,7 @@ Properties used in `@effective/css` that may be less familiar:
 [20]: https://snook.ca/archives/html_and_css/still-no-css-reset
 [21]: https://cloudfour.com/thinks/childish-font-sizes/
 [22]: https://github.com/Lazzzer00/Best-CSS-Reset-2024
+[23]: https://github.com/jensimmons/cssremedy
 
 ---
 
@@ -200,6 +201,9 @@ Properties used in `@effective/css` that may be less familiar:
 - Links: text-decoration-skip-ink
 - text-size-adjust: 100%
 - tab-size: 2
+- Hidden attribute: display: none !important
+- Scroll margin: :target { scroll-margin-block: 5ex }
+- Intrinsic size animations: interpolate-size: allow-keywords
 - Reduced Motion: scroll-behavior: auto
 - CSS Layers: @layer reset, fixes, elements
 - Font Smoothing: -webkit-font-smoothing: antialiased, -moz-osx-font-smoothing: grayscale

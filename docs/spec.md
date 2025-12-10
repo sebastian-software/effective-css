@@ -145,6 +145,20 @@
 
 * **UFX-022**: Additional reductions (e.g. `animation-duration`, `transition-duration`) are optional and MUST be clearly commented if implemented.
 
+### 3.4 Hidden attribute
+
+* **UFX-050**: The `[hidden]` attribute MUST reliably hide elements:
+
+  ```css
+  @layer fixes {
+    [hidden] {
+      display: none !important;
+    }
+  }
+  ```
+
+  The `!important` ensures the attribute works even when `display` is set by other CSS rules.
+
 ---
 
 ## 4. Layer `elements`
@@ -195,6 +209,34 @@
 
 * **ELT-030**: v1 MUST NOT define fluid typography, scales, or `clamp()`-based font sizing.
 * **ELT-031**: v1 MUST NOT define global type scales (heading hierarchies, rhythm systems, etc.); only default UA behavior + base font family.
+
+### 4.5 Scroll margin for anchor links
+
+* **ELT-050**: Targeted elements (`:target`) SHOULD have scroll margin for better UX:
+
+  ```css
+  @layer elements {
+    :target {
+      scroll-margin-block: 5ex;
+    }
+  }
+  ```
+
+### 4.6 Intrinsic size animations
+
+* **ELT-060**: When motion is allowed, `interpolate-size` MAY be enabled:
+
+  ```css
+  @layer elements {
+    @media (prefers-reduced-motion: no-preference) {
+      :root {
+        interpolate-size: allow-keywords;
+      }
+    }
+  }
+  ```
+
+  This enables CSS animations to/from `height: auto` and similar intrinsic sizes.
 
 ---
 

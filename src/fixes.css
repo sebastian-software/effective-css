@@ -123,4 +123,25 @@
       scroll-behavior: auto !important;
     }
   }
+
+  /**
+   * UFX-050: Ensure the hidden attribute works even when display is overridden.
+   *
+   * The HTML `hidden` attribute should hide elements, but CSS rules that set
+   * `display` can accidentally override it. Using `!important` ensures the
+   * attribute always works as intended.
+   *
+   * References:
+   * - https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden
+   * - https://www.scottohara.me/blog/2023/03/21/visually-hidden-content.html
+   *
+   * Aligned with:
+   * - Andy Bell (Piccalilli) – [hidden] { display: none !important }
+   * - CSS Remedy (Jen Simmons) – [hidden] { display: none }
+   * - The New CSS Reset (Elad Shechter) – :where([hidden]) { display: none }
+   * - Normalize.css – [hidden] { display: none }
+   */
+  [hidden] {
+    display: none !important;
+  }
 }
