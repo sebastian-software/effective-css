@@ -59,7 +59,7 @@ This table summarizes all relevant CSS reset recommendations from various source
 | **Lists** ||||
 | `ul, ol { list-style: none }` | 🚫 | [Elad Shechter][12], [Eric Meyer][11] — *We keep list-style defaults* | |
 | `ul[role="list"], ol[role="list"] { list-style: none }` | ❌ | [Andy Bell][2] | |
-| `menu { list-style: none }` | ❌ | [Tailwind][3] | |
+| `menu { list-style: none }` | ✅ | [Tailwind][3] | [MDN: menu element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu) |
 | **Tables** ||||
 | `table { border-collapse: collapse }` | ✅ | [Andy Bell][2], [Tailwind][3], [Eric Meyer][11] | |
 | `table { border-spacing: 0 }` | ✅ | [Eric Meyer][11] | |
